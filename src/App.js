@@ -1,4 +1,6 @@
 import './App.css'
+import Forecast from './Forecast'
+import HistoryAndFacts from './History-And-Facts'
 // import { useState, useEffect } from 'react'
 
 // const locationData = 'https://api.openweathermap.org/geo/1.0/direct?q=london&limit=5&appid=4a95e5cd2ec6b313c75d4a7c3b046b39'
@@ -18,7 +20,9 @@ function App() {
 
   return (
     <div className="App">
+      <Forecast />
       <h1>Brodericks Weather App</h1>
+      <HistoryAndFacts />
     </div>
   )
 }
