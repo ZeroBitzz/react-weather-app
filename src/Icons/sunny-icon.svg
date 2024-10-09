@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 5785.59 5667">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#radial-gradient);
+      }
+
+      .cls-2 {
+        fill: #ffb;
+      }
+
+      .cls-3 {
+        fill: #ffff7f;
+      }
+    </style>
+    <radialGradient id="radial-gradient" cx="2833.5" cy="2833.5" fx="2833.5" fy="2833.5" r="2833.5" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffff7f"/>
+      <stop offset="1" stop-color="#ffff7f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle class="cls-3" cx="2833.5" cy="2833.5" r="2032.5"/>
+  <circle class="cls-1" cx="2833.5" cy="2833.5" r="2833.5"/>
+  <rect class="cls-2" x="1377.02" y="1269.98" width="3407" height="269.04" rx="134.52" ry="134.52" transform="translate(-305 1425.6) rotate(-24.87)"/>
+  <rect class="cls-2" x="126.02" y="3015.98" width="3407" height="269.04" rx="134.52" ry="134.52" transform="translate(-1155.19 1061.41) rotate(-24.87)"/>
+  <rect class="cls-2" x="2524.02" y="3218.98" width="3407" height="269.04" rx="134.52" ry="134.52" transform="translate(-1018.23 2088.61) rotate(-24.87)"/>
+</svg>

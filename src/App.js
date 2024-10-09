@@ -18,7 +18,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>The weather </h1>
+      <h1>Brodericks Weather App</h1>
     </div>
   )
 }
