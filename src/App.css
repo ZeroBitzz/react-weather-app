@@ -3,6 +3,7 @@ body {
   color: white;
 }
 
+
 .App {
   text-align: center;
   display: flex;
@@ -21,7 +22,8 @@ body {
   background-color: transparent;
   font-size: 50px;
   color: white;
-  border: 0;
+  border: 1px solid rgb(69, 69, 69);
+  border-radius: 10px;
   width: 80%;
   height: 50px;
 }
