@@ -22,3 +22,21 @@
     cursor: pointer;
     background-color: rgb(69,69,69);
 }
+
+.search-history-h2 {
+    margin-top: -20px;
+}
+
+.thermostat {
+    background-color: transparent;
+    border: 1px solid rgb(69,69,69);
+    border-radius: 10px;
+    font-size: 20px;
+    color: white;
+    width: 60%;
+    height: 50px;
+}
+
+.thermostat-form {
+    margin-bottom: 20px;
+}

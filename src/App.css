@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(41, 41, 41);
+  background-color: rgb(22, 22, 22);
   color: white;
 }
 
@@ -10,3 +10,28 @@ body {
   justify-content: space-between;
 }
 
+.main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+.location-input {
+  background-color: transparent;
+  font-size: 50px;
+  color: white;
+  border: 0;
+  width: 80%;
+  height: 50px;
+}
+
+.weather-icon {
+  width: 150px;
+}
+
+.weatherman {
+  width: 50px;
+  align-self:self-end;
+  margin-bottom: 100px;
+}
