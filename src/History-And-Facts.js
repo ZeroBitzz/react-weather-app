@@ -3,8 +3,10 @@ import './History-And-Facts.css'
 const crankThermostat = (event) => {
     event.preventDefault()
     console.log(`the temperature is ${document.getElementById('thermostat').value}`)
-    document.getElementById('temperature').innerHTML = document.getElementById('thermostat').value + 'F'
+    document.getElementById('temperature').innerHTML = document.getElementById('thermostat').value + '°F'
 }
+
+
 
 function HistoryAndFacts(){
     return (
