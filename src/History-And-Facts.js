@@ -1,12 +1,18 @@
 import './History-And-Facts.css'
 
+const crankThermostat = (event) => {
+    event.preventDefault()
+    console.log(`the temperature is ${document.getElementById('thermostat').value}`)
+    document.getElementById('temperature').innerHTML = document.getElementById('thermostat').value + 'F'
+}
+
 function HistoryAndFacts(){
     return (
         <div className='history-and-facts'>
             <div>
                 <h2>Thermostat</h2>
-                <form className='thermostat-form'>
-                    <input className='thermostat' type='text' placeholder='Custom Temp(F)?'/>
+                <form onSubmit={crankThermostat}>
+                   <input id='thermostat' className='thermostat' type='number' placeholder='Custom Temp(F)?'/>
                 </form>
             </div>
 

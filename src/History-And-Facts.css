@@ -35,12 +35,19 @@
     color: white;
     width: 60%;
     height: 50px;
-}
-
-.thermostat-form {
     margin-bottom: 20px;
 }
 
 .facts {
     margin-top: -40px;
+}
+
+/* removes arrows on input tag */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number]{
+    -moz-appearance: textfield;
 }

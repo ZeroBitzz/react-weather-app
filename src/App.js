@@ -31,7 +31,7 @@ function App() {
             <form>
               <input className='location-input' type='text' placeholder='Type Location Here'/>
             </form>
-            <h2>Weather Condition / Temp</h2>
+            <h2>Weather Condition / <span id='temperature'>temp</span></h2>
             <img className='weather-icon' src={sunnyIcon}/>
           </div>
 
