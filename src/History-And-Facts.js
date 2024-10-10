@@ -4,9 +4,10 @@ const crankThermostat = (event) => {
     event.preventDefault()
     console.log(`the temperature is ${document.getElementById('thermostat').value}`)
     document.getElementById('temperature').innerHTML = document.getElementById('thermostat').value + '°F'
+    if(document.getElementById('thermostat').value === ''){
+        document.getElementById('temperature').innerHTML = `0°F`
+    }
 }
-
-
 
 function HistoryAndFacts(){
     return (
