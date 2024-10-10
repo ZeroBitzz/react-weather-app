@@ -32,6 +32,12 @@ const updateWeather = (event) => {
   // 5 day forecast selectors
   document.getElementById('5-day-forecast-weather-condition').innerHTML = 'sunny'
   document.getElementById('5-day-forecast-temperature').innerHTML = `35°F`
+
+  // update local storage
+  if(localStorage.getItem('location-1') === null){
+    localStorage.setItem('location-1', document.getElementById('location-input').innerText)
+  }
+  console.log(localStorage.getItem('location-1'))
 }
 
 function App() {
@@ -55,7 +61,7 @@ function App() {
           <div>
             <h1>Brodericks Weather App</h1>
             <form onSubmit={updateWeather}>
-              <input className='location-input' type='text' placeholder='Type Location Here'/>
+              <input className='location-input' id='location-input' type='text' placeholder='Type Location Here'/>
             </form>
             <h2><span id='weather-condition'>weather condition</span> / <span id='temperature'>temp</span></h2>
             <img className='weather-icon' src={sunnyIcon} alt='weather icon'/>
