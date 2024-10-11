@@ -1,7 +1,8 @@
 import './History-And-Facts.css'
 
+// function for changing the temperature manually using the thermostat in the top right corner of the app 
 const crankThermostat = (event) => {
-    event.preventDefault()
+    event.preventDefault() // preventDefault() is for preventing the page from refreshing 
     console.log(`the temperature is ${document.getElementById('thermostat').value}`)
     document.getElementById('temperature').innerHTML = document.getElementById('thermostat').value + '°F'
     if(document.getElementById('thermostat').value === ''){

@@ -8,7 +8,7 @@ import sunnyIcon from './Icons/sunny-icon.svg'
 // const locationData = 'https://api.openweathermap.org/geo/1.0/direct?q=london&limit=5&appid=4a95e5cd2ec6b313c75d4a7c3b046b39'
 // const weatherData = `https://api.openweathermap.org/data/3.0/onecall?lat=33.44&lon=-94.04&appid=1062393e2af2bbfdd204aedcdda64ac0`
 
-const updateWeather = (event) => {
+const updateWeather = (event) => { // changes the 5 day forecast and the main weather display
   event.preventDefault()
   document.getElementById('weather-condition').innerHTML = 'sunny'
   document.getElementById('temperature').innerHTML = `40°F`
