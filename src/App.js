@@ -34,10 +34,12 @@ const updateWeather = (event) => { // changes the 5 day forecast and the main we
   document.getElementById('5-day-forecast-temperature').innerHTML = `35°F`
 
   // update local storage
-  if(localStorage.getItem('location-1') === null){
-    localStorage.setItem('location-1', document.getElementById('location-input').innerText)
+  let setterArr = []
+  for(let i=0; i<5; i++){
+    setterArr.push(localStorage.getItem(`history${i}`))
+    console.log(localStorage.getItem(`history${i}`))
   }
-  console.log(localStorage.getItem('location-1'))
+  console.log(setterArr)
 }
 
 function App() {
