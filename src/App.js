@@ -61,7 +61,7 @@ const updateWeather = (event) => { // changes the 5 day forecast and the main we
   console.log(historyArr)
 }
 
-function App() {
+async function App () {
   // const [temp, setTemp] = useState(0)
 
   // useEffect(() => {

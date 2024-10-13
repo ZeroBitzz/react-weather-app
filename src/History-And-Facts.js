@@ -10,27 +10,6 @@ const crankThermostat = (event) => {
     }
 }
 
-function onStartup(){
-    if(localStorage.getItem('history0') != null){
-      document.getElementById('history-span-1').innerHTML = localStorage.getItem('history0')
-    }
-
-    if(localStorage.getItem('history1') != null){
-        document.getElementById('history-span-2').innerHTML = localStorage.getItem('history1')
-    }
-
-    if(localStorage.getItem('history2') != null){
-        document.getElementById('history-span-3').innerHTML = localStorage.getItem('history2')
-    }
-
-    if(localStorage.getItem('history3') != null){
-        document.getElementById('history-span-4').innerHTML = localStorage.getItem('history3')
-    }
-
-    if(localStorage.getItem('history4') != null){
-        document.getElementById('history-span-5').innerHTML = localStorage.getItem('history4')
-    }
-}
 
 function HistoryAndFacts(){
     return (
@@ -59,7 +38,6 @@ function HistoryAndFacts(){
                 <h3>Fun Weather Fact</h3>
                 <span>Hot weather sucks!</span>
             </div>
-            {onStartup()}
         </div>
     )
 }
