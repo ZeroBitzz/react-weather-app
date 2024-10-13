@@ -10,6 +10,28 @@ const crankThermostat = (event) => {
     }
 }
 
+function onStartup(){
+    if(localStorage.getItem('history0') != null){
+      document.getElementById('history-span-1').innerHTML = localStorage.getItem('history0')
+    }
+
+    if(localStorage.getItem('history1') != null){
+        document.getElementById('history-span-2').innerHTML = localStorage.getItem('history1')
+    }
+
+    if(localStorage.getItem('history2') != null){
+        document.getElementById('history-span-3').innerHTML = localStorage.getItem('history2')
+    }
+
+    if(localStorage.getItem('history3') != null){
+        document.getElementById('history-span-4').innerHTML = localStorage.getItem('history3')
+    }
+
+    if(localStorage.getItem('history4') != null){
+        document.getElementById('history-span-5').innerHTML = localStorage.getItem('history4')
+    }
+}
+
 function HistoryAndFacts(){
     return (
         <div className='history-and-facts'>
@@ -24,11 +46,11 @@ function HistoryAndFacts(){
 
             <div className='history'>
                 <h2 className='search-history-h2'>Search History</h2>
-                <span>History1</span>
-                <span>History2</span>
-                <span>History3</span>
-                <span>History4</span>
-                <span>History5</span>
+                <span id='history-span-1'>History1</span>
+                <span id='history-span-2'>History2</span>
+                <span id='history-span-3'>History3</span>
+                <span id='history-span-4'>History4</span>
+                <span id='history-span-5'>History5</span>
             </div>
 
             <hr />
@@ -37,6 +59,7 @@ function HistoryAndFacts(){
                 <h3>Fun Weather Fact</h3>
                 <span>Hot weather sucks!</span>
             </div>
+            {onStartup()}
         </div>
     )
 }

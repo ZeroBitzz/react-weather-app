@@ -34,16 +34,34 @@ const updateWeather = (event) => { // changes the 5 day forecast and the main we
   document.getElementById('5-day-forecast-temperature').innerHTML = `35°F`
 
   // update local storage
-  let setterArr = []
+  // gets the local storage values and stores them for historyArrison in historyArr
+  let historyArr = []
+  let currentLocation = document.getElementById('location-input').value
   for(let i=0; i<5; i++){
-    setterArr.push(localStorage.getItem(`history${i}`))
-    console.log(localStorage.getItem(`history${i}`))
+    historyArr.push(localStorage.getItem(`history${i}`))
   }
-  console.log(setterArr)
+  historyArr[4] = historyArr[3]
+  historyArr[3] = historyArr[2]
+  historyArr[2] = historyArr[1]
+  historyArr[1] = historyArr[0]
+  historyArr[0] = currentLocation
+  localStorage.setItem('history0', currentLocation)
+  localStorage.setItem('history1', historyArr[1])
+  localStorage.setItem('history2', historyArr[2])
+  localStorage.setItem('history3', historyArr[3])
+  localStorage.setItem('history4', historyArr[4])
+  document.getElementById('history-span-1').innerHTML = currentLocation
+  document.getElementById('history-span-2').innerHTML = localStorage.getItem('history1')
+  document.getElementById('history-span-3').innerHTML = localStorage.getItem('history2')
+  document.getElementById('history-span-4').innerHTML = localStorage.getItem('history3')
+  document.getElementById('history-span-5').innerHTML = localStorage.getItem('history4')
+  for(let x=0; x<historyArr.length; x++){
+    localStorage.setItem(`history${x}`, historyArr[x])
+  }
+  console.log(historyArr)
 }
 
 function App() {
-
   // const [temp, setTemp] = useState(0)
 
   // useEffect(() => {
