@@ -51,61 +51,72 @@ function App () {
 
 const updateWeather = (event) => { // changes the 5 day forecast and the main weather display
   event.preventDefault()
-  let searchedLocation = document.getElementById('location-input')
-  if(/\d/.test(searchedLocation)){
-    console.log('contains numbers')
+  let searchedLocation = document.getElementById('location-input').value
+  let containsNumbers = false
+  for(let i=0; i<searchedLocation.length; i++){
+      console.log(`${searchedLocation[i]} is a number? ${!isNaN(Number(searchedLocation[i]))}`)
+      if(Number(searchedLocation[i])){
+        document.getElementById('location-input').value = 'No numbers please'
+        if(searchedLocation[i] != ' '){
+          containsNumbers = true
+        }
+      }
   }
-  document.getElementById('weather-condition').innerHTML = 'sunny'
-  document.getElementById('temperature').innerHTML = `40°F`
-
-  // 1 day forecast selectors
-  document.getElementById('1-day-forecast-weather-condition').innerHTML = 'sunny'
-  document.getElementById('1-day-forecast-temperature').innerHTML = `45°F`
-
-  // 2 day forecast selectors
-  document.getElementById('2-day-forecast-weather-condition').innerHTML = 'cloudy'
-  document.getElementById('2-day-forecast-temperature').innerHTML = `30°F`
-
-  // 3 day forecast selectors
-  document.getElementById('3-day-forecast-weather-condition').innerHTML = 'sunny'
-  document.getElementById('3-day-forecast-temperature').innerHTML = `50°F`
-
-  // 4 day forecast selectors
-  document.getElementById('4-day-forecast-weather-condition').innerHTML = 'sunny'
-  document.getElementById('4-day-forecast-temperature').innerHTML = `45°F`
-
-  // 5 day forecast selectors
-  document.getElementById('5-day-forecast-weather-condition').innerHTML = 'sunny'
-  document.getElementById('5-day-forecast-temperature').innerHTML = `35°F`
-
-  // update local storage
-  // gets the local storage values and stores them for historyArrison in historyArr
-  let historyArr = []
-  let currentLocation = document.getElementById('location-input').value
-  for(let i=0; i<5; i++){
-    historyArr.push(localStorage.getItem(`history${i}`))
+  if(!containsNumbers){
+    document.getElementById('weather-condition').innerHTML = 'sunny'
+    document.getElementById('temperature').innerHTML = `40°F`
+  
+    // 1 day forecast selectors
+    document.getElementById('1-day-forecast-weather-condition').innerHTML = 'sunny'
+    document.getElementById('1-day-forecast-temperature').innerHTML = `45°F`
+  
+    // 2 day forecast selectors
+    document.getElementById('2-day-forecast-weather-condition').innerHTML = 'cloudy'
+    document.getElementById('2-day-forecast-temperature').innerHTML = `30°F`
+  
+    // 3 day forecast selectors
+    document.getElementById('3-day-forecast-weather-condition').innerHTML = 'sunny'
+    document.getElementById('3-day-forecast-temperature').innerHTML = `50°F`
+  
+    // 4 day forecast selectors
+    document.getElementById('4-day-forecast-weather-condition').innerHTML = 'sunny'
+    document.getElementById('4-day-forecast-temperature').innerHTML = `45°F`
+  
+    // 5 day forecast selectors
+    document.getElementById('5-day-forecast-weather-condition').innerHTML = 'sunny'
+    document.getElementById('5-day-forecast-temperature').innerHTML = `35°F`
+  
+    // update local storage
+    // gets the local storage values and stores them for historyArrison in historyArr
+    let historyArr = []
+    let currentLocation = document.getElementById('location-input').value
+    for(let i=0; i<5; i++){
+      historyArr.push(localStorage.getItem(`history${i}`))
+    }
+  
+    historyArr[4] = historyArr[3]
+    historyArr[3] = historyArr[2]
+    historyArr[2] = historyArr[1]
+    historyArr[1] = historyArr[0]
+    historyArr[0] = currentLocation
+    localStorage.setItem('history0', currentLocation)
+    localStorage.setItem('history1', historyArr[1])
+    localStorage.setItem('history2', historyArr[2])
+    localStorage.setItem('history3', historyArr[3])
+    localStorage.setItem('history4', historyArr[4])
+    document.getElementById('history-span-1').innerHTML = currentLocation
+    document.getElementById('history-span-2').innerHTML = localStorage.getItem('history1')
+    document.getElementById('history-span-3').innerHTML = localStorage.getItem('history2')
+    document.getElementById('history-span-4').innerHTML = localStorage.getItem('history3')
+    document.getElementById('history-span-5').innerHTML = localStorage.getItem('history4')
+  
+    for(let x=0; x<historyArr.length; x++){
+      localStorage.setItem(`history${x}`, historyArr[x])
+    }
+  }else{
+    document.getElementById('location-input').value = 'No numbers please'
   }
 
-  historyArr[4] = historyArr[3]
-  historyArr[3] = historyArr[2]
-  historyArr[2] = historyArr[1]
-  historyArr[1] = historyArr[0]
-  historyArr[0] = currentLocation
-  localStorage.setItem('history0', currentLocation)
-  localStorage.setItem('history1', historyArr[1])
-  localStorage.setItem('history2', historyArr[2])
-  localStorage.setItem('history3', historyArr[3])
-  localStorage.setItem('history4', historyArr[4])
-  document.getElementById('history-span-1').innerHTML = currentLocation
-  document.getElementById('history-span-2').innerHTML = localStorage.getItem('history1')
-  document.getElementById('history-span-3').innerHTML = localStorage.getItem('history2')
-  document.getElementById('history-span-4').innerHTML = localStorage.getItem('history3')
-  document.getElementById('history-span-5').innerHTML = localStorage.getItem('history4')
-
-  for(let x=0; x<historyArr.length; x++){
-    localStorage.setItem(`history${x}`, historyArr[x])
-  }
-  console.log(historyArr)
 }
 
 function checkLocalStorageAndUpdate() {
