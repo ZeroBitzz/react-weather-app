@@ -5,23 +5,7 @@ import weatherman from './weatherman/weatherman.svg'
 import sunnyIcon from './Icons/sunny-icon.svg'
 import { useEffect } from 'react'
 
-const url = `http://api.weatherapi.com/v1/current.json?key=0a29a7e6a18c4c08ad3221540241510&q=salt lake city&aqi=no`
-
-function fetchApiData() {
-
-}
-
 function App () {
-  useEffect(() => {
-    const fetchData = async () => {
-      await fetch(url)
-      .then((resp) => resp.json())
-      .then((responseData) => {
-        console.log(responseData.current.temp_f)
-      })
-    }
-    fetchData()
-  }, [])
 
   return (
     <div className="App">
@@ -49,6 +33,21 @@ function App () {
   )
 }
 
+function FetchApi () {
+  let url = `http://api.weatherapi.com/v1/current.json?key=0a29a7e6a18c4c08ad3221540241510&q=${document.getElementById('location-input').value}&aqi=no`
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetch(url)
+      .then((resp) => resp.json())
+      .then((responseData) => {
+        console.log(responseData.current.temp_f)
+      })
+    }
+    fetchData()
+  }, [])
+}
+
 const updateWeather = (event) => { // changes the 5 day forecast and the main weather display
   event.preventDefault()
   let searchedLocation = document.getElementById('location-input').value
@@ -57,12 +56,11 @@ const updateWeather = (event) => { // changes the 5 day forecast and the main we
       console.log(`${searchedLocation[i]} is a number? ${!isNaN(Number(searchedLocation[i]))}`)
       if(Number(searchedLocation[i])){
         document.getElementById('location-input').value = 'No numbers please'
-        if(searchedLocation[i] != ' '){
-          containsNumbers = true
-        }
+        containsNumbers = true
       }
   }
   if(!containsNumbers){
+    FetchApi()
     document.getElementById('weather-condition').innerHTML = 'sunny'
     document.getElementById('temperature').innerHTML = `40°F`
   
