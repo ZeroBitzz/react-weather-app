@@ -47,8 +47,27 @@ const updateWeather = (event) => { // changes the 5 day forecast and the main we
       if(document.getElementById('location-input').value.toLowerCase() === 'the sun' || document.getElementById('location-input').value.toLowerCase() === 'sun'){
         document.getElementById('temperature').innerHTML = '10,000°F'
         document.getElementById('weather-condition').innerHTML = 'Extremely Hot'
+        // 1 day forecast selectors
+        document.getElementById('1-day-forecast-weather-condition').innerHTML = 'Extremely Hot'
+        document.getElementById('1-day-forecast-temperature').innerHTML = `10,000°F`
+      
+        // 2 day forecast selectors
+        document.getElementById('2-day-forecast-weather-condition').innerHTML = 'Extremely Hot'
+        document.getElementById('2-day-forecast-temperature').innerHTML = `10,000°F`
+      
+        // 3 day forecast selectors
+        document.getElementById('3-day-forecast-weather-condition').innerHTML = 'Extremely Hot'
+        document.getElementById('3-day-forecast-temperature').innerHTML = `10,000°F`
+      
+        // 4 day forecast selectors
+        document.getElementById('4-day-forecast-weather-condition').innerHTML = 'Extremely Hot'
+        document.getElementById('4-day-forecast-temperature').innerHTML = `10,000°F`
+      
+        // 5 day forecast selectors
+        document.getElementById('5-day-forecast-weather-condition').innerHTML = 'Extremely Hot'
+        document.getElementById('5-day-forecast-temperature').innerHTML = `10,000°F`
       }else{
-        let url = `https://api.weatherapi.com/v1/forecast.json?key=0a29a7e6a18c4c08ad3221540241510&q=${document.getElementById('location-input').value}&days=5&aqi=no&alerts=no`
+        let url = `https://api.weatherapi.com/v1/forecast.json?key=0a29a7e6a18c4c08ad3221540241510&q=${document.getElementById('location-input').value}&days=5&aqi=yes&alerts=no`
         const fetchData = async () => {
           await fetch(url)
           .then((resp) => resp.json())
@@ -58,6 +77,26 @@ const updateWeather = (event) => { // changes the 5 day forecast and the main we
               console.log(responseData.current.condition.text)
               document.getElementById('temperature').innerHTML = `${responseData.current.temp_f}°F`
               document.getElementById('weather-condition').innerHTML = responseData.current.condition.text
+              
+              // 1 day forecast selectors
+              document.getElementById('1-day-forecast-weather-condition').innerHTML = responseData.forecast.forecastday[0].day.condition.text
+              document.getElementById('1-day-forecast-temperature').innerHTML = `${responseData.forecast.forecastday[0].day.maxtemp_f}°F`
+            
+              // 2 day forecast selectors
+              document.getElementById('2-day-forecast-weather-condition').innerHTML = responseData.forecast.forecastday[1].day.condition.text
+              document.getElementById('2-day-forecast-temperature').innerHTML = `${responseData.forecast.forecastday[1].day.maxtemp_f}°F`
+            
+              // 3 day forecast selectors
+              document.getElementById('3-day-forecast-weather-condition').innerHTML = responseData.forecast.forecastday[2].day.condition.text
+              document.getElementById('3-day-forecast-temperature').innerHTML = `${responseData.forecast.forecastday[2].day.maxtemp_f}°F`
+            
+              // 4 day forecast selectors
+              document.getElementById('4-day-forecast-weather-condition').innerHTML = responseData.forecast.forecastday[3].day.condition.text
+              document.getElementById('4-day-forecast-temperature').innerHTML = `${responseData.forecast.forecastday[3].day.maxtemp_f}°F`
+            
+              // 5 day forecast selectors
+              document.getElementById('5-day-forecast-weather-condition').innerHTML = responseData.forecast.forecastday[4].day.condition.text
+              document.getElementById('5-day-forecast-temperature').innerHTML = `${responseData.forecast.forecastday[4].day.maxtemp_f}°F`
             }catch(err){
               console.log(err)
               document.getElementById('location-input').value = 'Invalid entry'
@@ -66,25 +105,6 @@ const updateWeather = (event) => { // changes the 5 day forecast and the main we
         }
         fetchData()  
       }
-    // 1 day forecast selectors
-    document.getElementById('1-day-forecast-weather-condition').innerHTML = 'sunny'
-    document.getElementById('1-day-forecast-temperature').innerHTML = `45°F`
-  
-    // 2 day forecast selectors
-    document.getElementById('2-day-forecast-weather-condition').innerHTML = 'cloudy'
-    document.getElementById('2-day-forecast-temperature').innerHTML = `30°F`
-  
-    // 3 day forecast selectors
-    document.getElementById('3-day-forecast-weather-condition').innerHTML = 'sunny'
-    document.getElementById('3-day-forecast-temperature').innerHTML = `50°F`
-  
-    // 4 day forecast selectors
-    document.getElementById('4-day-forecast-weather-condition').innerHTML = 'sunny'
-    document.getElementById('4-day-forecast-temperature').innerHTML = `45°F`
-  
-    // 5 day forecast selectors
-    document.getElementById('5-day-forecast-weather-condition').innerHTML = 'sunny'
-    document.getElementById('5-day-forecast-temperature').innerHTML = `35°F`
   
     // update local storage
     // gets the local storage values and stores them for historyArrison in historyArr
