@@ -5,8 +5,9 @@ import weatherman from './weatherman/weatherman.svg'
 import sunnyIcon from './Icons/sunny-icon.svg'
 import { useEffect } from 'react'
 
+let testBool = false
+
 function App () {
-  let testBool = false
   
   useEffect(() => {
     if(testBool){
@@ -59,6 +60,8 @@ const updateWeather = (event) => { // changes the 5 day forecast and the main we
       if(Number(searchedLocation[i])){
         document.getElementById('location-input').value = 'No numbers please'
         containsNumbers = true
+        testBool = true
+        App()
       }
   }
   if(!containsNumbers){
