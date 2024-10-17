@@ -66,7 +66,9 @@ const updateWeather = (event) => { // changes the 5 day forecast and the main we
         // 5 day forecast selectors
         document.getElementById('5-day-forecast-weather-condition').innerHTML = 'Extremely Hot'
         document.getElementById('5-day-forecast-temperature').innerHTML = `10,000°F`
+        checkLocalStorageAndUpdate()
       }else{
+        // gets api data and populates page based on what user inputs for the location
         let url = `https://api.weatherapi.com/v1/forecast.json?key=0a29a7e6a18c4c08ad3221540241510&q=${document.getElementById('location-input').value}&days=5&aqi=yes&alerts=no`
         const fetchData = async () => {
           await fetch(url)
@@ -97,42 +99,15 @@ const updateWeather = (event) => { // changes the 5 day forecast and the main we
               // 5 day forecast selectors
               document.getElementById('5-day-forecast-weather-condition').innerHTML = responseData.forecast.forecastday[4].day.condition.text
               document.getElementById('5-day-forecast-temperature').innerHTML = `${responseData.forecast.forecastday[4].day.maxtemp_f}°F`
+              checkLocalStorageAndUpdate()
             }catch(err){
               console.log(err)
               document.getElementById('location-input').value = 'Invalid entry'
             }
           })
         }
-        fetchData()  
+        fetchData()
       }
-  
-    // update local storage
-    // gets the local storage values and stores them for historyArrison in historyArr
-    let historyArr = []
-    let currentLocation = document.getElementById('location-input').value
-    for(let i=0; i<5; i++){
-      historyArr.push(localStorage.getItem(`history${i}`))
-    }
-  
-    historyArr[4] = historyArr[3]
-    historyArr[3] = historyArr[2]
-    historyArr[2] = historyArr[1]
-    historyArr[1] = historyArr[0]
-    historyArr[0] = currentLocation
-    localStorage.setItem('history0', currentLocation)
-    localStorage.setItem('history1', historyArr[1])
-    localStorage.setItem('history2', historyArr[2])
-    localStorage.setItem('history3', historyArr[3])
-    localStorage.setItem('history4', historyArr[4])
-    document.getElementById('history-span-1').innerHTML = currentLocation
-    document.getElementById('history-span-2').innerHTML = localStorage.getItem('history1')
-    document.getElementById('history-span-3').innerHTML = localStorage.getItem('history2')
-    document.getElementById('history-span-4').innerHTML = localStorage.getItem('history3')
-    document.getElementById('history-span-5').innerHTML = localStorage.getItem('history4')
-  
-    for(let x=0; x<historyArr.length; x++){
-      localStorage.setItem(`history${x}`, historyArr[x])
-    }
   }else{
     document.getElementById('location-input').value = 'No numbers please'
   }
@@ -140,21 +115,27 @@ const updateWeather = (event) => { // changes the 5 day forecast and the main we
 }
 
 function checkLocalStorageAndUpdate() {
-  if(localStorage.getItem('history0') === String){
-    document.getElementById('history-span-1').innerHTML = localStorage.getItem('history0')
-  }
-  if(localStorage.getItem('history1') === String){
-    document.getElementById('history-span-2').innerHTML = localStorage.getItem('histor1')
-  }
-  if(localStorage.getItem('history2') === String){
-    document.getElementById('history-span-3').innerHTML = localStorage.getItem('history2')
-  }
-  if(localStorage.getItem('history3') === String){
-    document.getElementById('history-span-4').innerHTML = localStorage.getItem('history3')
-  }
-  if(localStorage.getItem('history4') === String){
-    document.getElementById('history-span-5').innerHTML = localStorage.getItem('history4')
-  }
+  // update local storage
+  // gets the local storage values and stores them for historyArrison in historyArr
+  let historyArr = []
+  let currentLocation = document.getElementById('location-input').value
+  for(let i=0; i<5; i++){historyArr.push(localStorage.getItem(`history${i}`))}
+  historyArr[4] = historyArr[3]
+  historyArr[3] = historyArr[2]
+  historyArr[2] = historyArr[1]
+  historyArr[1] = historyArr[0]
+  historyArr[0] = currentLocation
+  localStorage.setItem('history0', currentLocation)
+  localStorage.setItem('history1', historyArr[1])
+  localStorage.setItem('history2', historyArr[2])
+  localStorage.setItem('history3', historyArr[3])
+  localStorage.setItem('history4', historyArr[4])
+  document.getElementById('history-span-1').innerHTML = currentLocation
+  document.getElementById('history-span-2').innerHTML = localStorage.getItem('history1')
+  document.getElementById('history-span-3').innerHTML = localStorage.getItem('history2')
+  document.getElementById('history-span-4').innerHTML = localStorage.getItem('history3')
+  document.getElementById('history-span-5').innerHTML = localStorage.getItem('history4')
+  for(let x=0; x<historyArr.length; x++){localStorage.setItem(`history${x}`, historyArr[x])}
 }
 
 export default App
