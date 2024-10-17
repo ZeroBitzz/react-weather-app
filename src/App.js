@@ -3,14 +3,15 @@ import Forecast from './Forecast'
 import HistoryAndFacts from './History-And-Facts'
 import weatherman from './weatherman/weatherman.svg'
 import sunnyIcon from './Icons/sunny-icon.svg'
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 
-const locationData = 'https://api.openweathermap.org/geo/1.0/direct?q=london&limit=5&appid=4a95e5cd2ec6b313c75d4a7c3b046b39'
-const url = `http://api.weatherapi.com/v1/current.json?key=0a29a7e6a18c4c08ad3221540241510&q=London&aqi=no`
+const url = `http://api.weatherapi.com/v1/current.json?key=0a29a7e6a18c4c08ad3221540241510&q=salt lake city&aqi=no`
+
+function fetchApiData() {
+
+}
 
 function App () {
-  const [temp, setTemp] = useState(0)
-  console.log(url)
   useEffect(() => {
     const fetchData = async () => {
       await fetch(url)
@@ -50,6 +51,10 @@ function App () {
 
 const updateWeather = (event) => { // changes the 5 day forecast and the main weather display
   event.preventDefault()
+  let searchedLocation = document.getElementById('location-input')
+  if(/\d/.test(searchedLocation)){
+    console.log('contains numbers')
+  }
   document.getElementById('weather-condition').innerHTML = 'sunny'
   document.getElementById('temperature').innerHTML = `40°F`
 
