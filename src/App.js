@@ -3,27 +3,8 @@ import Forecast from './Forecast'
 import HistoryAndFacts from './History-And-Facts'
 import weatherman from './weatherman/weatherman.svg'
 import sunnyIcon from './Icons/sunny-icon.svg'
-import { useEffect } from 'react'
-
-let testBool = false
 
 function App () {
-  
-  useEffect(() => {
-    if(testBool){
-      let url = `http://api.weatherapi.com/v1/current.json?key=0a29a7e6a18c4c08ad3221540241510&q=${document.getElementById('location-input').value}&aqi=no`
-      const fetchData = async () => {
-        await fetch(url)
-        .then((resp) => resp.json())
-        .then((responseData) => {
-          console.log(responseData.current.temp_f)
-        })
-      }
-      fetchData()
-    }else{
-      console.log('no fetch')
-    }
-  }, [])
 
   return (
     <div className="App">
@@ -60,14 +41,31 @@ const updateWeather = (event) => { // changes the 5 day forecast and the main we
       if(Number(searchedLocation[i])){
         document.getElementById('location-input').value = 'No numbers please'
         containsNumbers = true
-        testBool = true
-        App()
       }
-  }
-  if(!containsNumbers){
-    document.getElementById('weather-condition').innerHTML = 'sunny'
-    document.getElementById('temperature').innerHTML = `40°F`
-  
+    }
+    if(!containsNumbers){
+      if(document.getElementById('location-input').value.toLowerCase() === 'the sun' || document.getElementById('location-input').value.toLowerCase() === 'sun'){
+        document.getElementById('temperature').innerHTML = '10,000°F'
+        document.getElementById('weather-condition').innerHTML = 'Extremely Hot'
+      }else{
+        let url = `https://api.weatherapi.com/v1/forecast.json?key=0a29a7e6a18c4c08ad3221540241510&q=${document.getElementById('location-input').value}&days=5&aqi=no&alerts=no`
+        const fetchData = async () => {
+          await fetch(url)
+          .then((resp) => resp.json())
+          .then((responseData) => {
+            try{
+              console.log(responseData.current.temp_f)
+              console.log(responseData.current.condition.text)
+              document.getElementById('temperature').innerHTML = `${responseData.current.temp_f}°F`
+              document.getElementById('weather-condition').innerHTML = responseData.current.condition.text
+            }catch(err){
+              console.log(err)
+              document.getElementById('location-input').value = 'Invalid entry'
+            }
+          })
+        }
+        fetchData()  
+      }
     // 1 day forecast selectors
     document.getElementById('1-day-forecast-weather-condition').innerHTML = 'sunny'
     document.getElementById('1-day-forecast-temperature').innerHTML = `45°F`
