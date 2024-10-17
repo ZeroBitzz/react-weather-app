@@ -5,7 +5,6 @@ import weatherman from './weatherman/weatherman.svg'
 import sunnyIcon from './Icons/sunny-icon.svg'
 
 function App () {
-
   return (
     <div className="App">
       <Forecast />
@@ -33,18 +32,18 @@ function App () {
 }
 
 const updateWeather = (event) => { // changes the 5 day forecast and the main weather display
-  event.preventDefault()
+  event.preventDefault() // prevents page from refreshing on submission of form
   let searchedLocation = document.getElementById('location-input').value
   let containsNumbers = false
   for(let i=0; i<searchedLocation.length; i++){
       console.log(`${searchedLocation[i]} is a number? ${!isNaN(Number(searchedLocation[i]))}`)
       if(Number(searchedLocation[i])){
-        document.getElementById('location-input').value = 'No numbers please'
+        searchedLocation = 'No numbers please'
         containsNumbers = true
       }
     }
     if(!containsNumbers){
-      if(document.getElementById('location-input').value.toLowerCase() === 'the sun' || document.getElementById('location-input').value.toLowerCase() === 'sun'){
+      if(searchedLocation.toLowerCase() === 'the sun' || searchedLocation.toLowerCase() === 'sun'){
         document.getElementById('temperature').innerHTML = '10,000°F'
         document.getElementById('weather-condition').innerHTML = 'Extremely Hot'
         // 1 day forecast selectors
