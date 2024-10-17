@@ -6,6 +6,23 @@ import sunnyIcon from './Icons/sunny-icon.svg'
 import { useEffect } from 'react'
 
 function App () {
+  let testBool = false
+  
+  useEffect(() => {
+    if(testBool){
+      let url = `http://api.weatherapi.com/v1/current.json?key=0a29a7e6a18c4c08ad3221540241510&q=${document.getElementById('location-input').value}&aqi=no`
+      const fetchData = async () => {
+        await fetch(url)
+        .then((resp) => resp.json())
+        .then((responseData) => {
+          console.log(responseData.current.temp_f)
+        })
+      }
+      fetchData()
+    }else{
+      console.log('no fetch')
+    }
+  }, [])
 
   return (
     <div className="App">
@@ -33,21 +50,6 @@ function App () {
   )
 }
 
-function FetchApi () {
-  let url = `http://api.weatherapi.com/v1/current.json?key=0a29a7e6a18c4c08ad3221540241510&q=${document.getElementById('location-input').value}&aqi=no`
-
-  useEffect(() => {
-    const fetchData = async () => {
-      await fetch(url)
-      .then((resp) => resp.json())
-      .then((responseData) => {
-        console.log(responseData.current.temp_f)
-      })
-    }
-    fetchData()
-  }, [])
-}
-
 const updateWeather = (event) => { // changes the 5 day forecast and the main weather display
   event.preventDefault()
   let searchedLocation = document.getElementById('location-input').value
@@ -60,7 +62,6 @@ const updateWeather = (event) => { // changes the 5 day forecast and the main we
       }
   }
   if(!containsNumbers){
-    FetchApi()
     document.getElementById('weather-condition').innerHTML = 'sunny'
     document.getElementById('temperature').innerHTML = `40°F`
   
