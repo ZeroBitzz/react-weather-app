@@ -3,20 +3,24 @@ import Forecast from './Forecast'
 import HistoryAndFacts from './History-And-Facts'
 import weatherman from './weatherman/weatherman.svg'
 import sunnyIcon from './Icons/sunny-icon.svg'
-// import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
-// const locationData = 'https://api.openweathermap.org/geo/1.0/direct?q=london&limit=5&appid=4a95e5cd2ec6b313c75d4a7c3b046b39'
-// const weatherData = `https://api.openweathermap.org/data/3.0/onecall?lat=33.44&lon=-94.04&appid=1062393e2af2bbfdd204aedcdda64ac0`
+const locationData = 'https://api.openweathermap.org/geo/1.0/direct?q=london&limit=5&appid=4a95e5cd2ec6b313c75d4a7c3b046b39'
+const url = `http://api.weatherapi.com/v1/current.json?key=0a29a7e6a18c4c08ad3221540241510&q=London&aqi=no`
+
 function App () {
-  // const [temp, setTemp] = useState(0)
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const result = await fetch(weatherData)
-  //     console.log(result)
-  //   }
-  //   fetchData()
-  // }, [])
+  const [temp, setTemp] = useState(0)
+  console.log(url)
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetch(url)
+      .then((resp) => resp.json())
+      .then((responseData) => {
+        console.log(responseData.current.temp_f)
+      })
+    }
+    fetchData()
+  }, [])
 
   return (
     <div className="App">
