@@ -5,8 +5,9 @@ import weatherman from './weatherman/weatherman.svg'
 import sunnyIcon from './Icons/sunny-icon.svg'
 import { updateWeather } from './updateWeather'
 
-function preventD(event){
+function fetchApi(event){
   event.preventDefault()
+  updateWeather()
 }
 
 function App () {
@@ -17,7 +18,7 @@ function App () {
         <div className='main-content'>
           <div>
             <h1>Brodericks Weather App</h1>
-            <form onSubmit={preventD}>
+            <form onSubmit={fetchApi}>
               <input className='location-input' id='location-input' type='text' placeholder='Type Location Here'/>
             </form>
             <h2><span id='weather-condition'>weather condition</span> / <span id='temperature'>temp</span></h2>
