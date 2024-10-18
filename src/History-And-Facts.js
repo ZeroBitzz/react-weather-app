@@ -10,7 +10,6 @@ const crankThermostat = (event) => {
     }
 }
 
-
 function HistoryAndFacts(){
     return (
         <div className='history-and-facts'>
@@ -25,11 +24,11 @@ function HistoryAndFacts(){
 
             <div className='history'>
                 <h2 className='search-history-h2'>Search History</h2>
-                <span id='history-span-1'>History1</span>
-                <span id='history-span-2'>History2</span>
-                <span id='history-span-3'>History3</span>
-                <span id='history-span-4'>History4</span>
-                <span id='history-span-5'>History5</span>
+                <span id='history-span-1'>{localStorage.getItem('history0')}</span>
+                <span id='history-span-2'>{localStorage.getItem('history1')}</span>
+                <span id='history-span-3'>{localStorage.getItem('history2')}</span>
+                <span id='history-span-4'>{localStorage.getItem('history3')}</span>
+                <span id='history-span-5'>{localStorage.getItem('history4')}</span>
             </div>
 
             <hr />
