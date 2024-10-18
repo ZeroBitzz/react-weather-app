@@ -1,5 +1,5 @@
-export const updateWeather = (event) => { // changes the 5 day forecast and the main weather display
-    event.preventDefault() // prevents page from refreshing on submission of form
+export const updateWeather = () => { // changes the 5 day forecast and the main weather display
+    // event.preventDefault() // prevents page from refreshing on submission of form
     let searchedLocation = document.getElementById('location-input').value
     let containsNumbers = false
     for(let i=0; i<searchedLocation.length; i++){
