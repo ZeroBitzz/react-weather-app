@@ -9,7 +9,6 @@ function App () {
     <div className="App">
       <Forecast />
       <div>
-
         <div className='main-content'>
           <div>
             <h1>Brodericks Weather App</h1>
@@ -119,22 +118,24 @@ function checkLocalStorageAndUpdate() {
   let historyArr = []
   let currentLocation = document.getElementById('location-input').value
   for(let i=0; i<5; i++){historyArr.push(localStorage.getItem(`history${i}`))}
-  historyArr[4] = historyArr[3]
-  historyArr[3] = historyArr[2]
-  historyArr[2] = historyArr[1]
-  historyArr[1] = historyArr[0]
-  historyArr[0] = currentLocation
-  localStorage.setItem('history0', currentLocation)
-  localStorage.setItem('history1', historyArr[1])
-  localStorage.setItem('history2', historyArr[2])
-  localStorage.setItem('history3', historyArr[3])
-  localStorage.setItem('history4', historyArr[4])
-  document.getElementById('history-span-1').innerHTML = currentLocation
-  document.getElementById('history-span-2').innerHTML = localStorage.getItem('history1')
-  document.getElementById('history-span-3').innerHTML = localStorage.getItem('history2')
-  document.getElementById('history-span-4').innerHTML = localStorage.getItem('history3')
-  document.getElementById('history-span-5').innerHTML = localStorage.getItem('history4')
-  for(let x=0; x<historyArr.length; x++){localStorage.setItem(`history${x}`, historyArr[x])}
+  if(!historyArr.includes(currentLocation)){
+    historyArr[4] = historyArr[3]
+    historyArr[3] = historyArr[2]
+    historyArr[2] = historyArr[1]
+    historyArr[1] = historyArr[0]
+    historyArr[0] = currentLocation
+    localStorage.setItem('history0', currentLocation)
+    localStorage.setItem('history1', historyArr[1])
+    localStorage.setItem('history2', historyArr[2])
+    localStorage.setItem('history3', historyArr[3])
+    localStorage.setItem('history4', historyArr[4])
+    document.getElementById('history-span-1').innerHTML = currentLocation
+    document.getElementById('history-span-2').innerHTML = localStorage.getItem('history1')
+    document.getElementById('history-span-3').innerHTML = localStorage.getItem('history2')
+    document.getElementById('history-span-4').innerHTML = localStorage.getItem('history3')
+    document.getElementById('history-span-5').innerHTML = localStorage.getItem('history4')
+    for(let x=0; x<historyArr.length; x++){localStorage.setItem(`history${x}`, historyArr[x])}
+  }
 }
 
 export default App
