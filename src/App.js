@@ -2,8 +2,22 @@ import './App.css'
 import Forecast from './Forecast'
 import HistoryAndFacts from './History-And-Facts'
 import weatherman from './weatherman/weatherman.svg'
-import sunnyIcon from './Icons/sunny-icon.svg'
 import { updateWeather } from './updateWeather'
+//icons
+import sunnyIcon from './Icons/sunny-icon.svg'
+import blizzardIcon from './Icons/blizzard-icon.svg'
+import cloudyIcon from './Icons/cloudy-icon.svg'
+import fogIcon from './Icons/fog-icon.svg'
+import freezingPelletsIcon from 'freezingPelletsIcon./Icons/-icon.svg'
+import mistIcon from './Icons/mist-icon.svg'
+import partlyCloudyIcon from './Icons/partly-cloudy-icon.svg'
+import rainIcon from './Icons/rain-icon.svg'
+import rainThunderIcon from './Icons/rain-thunder-icon.svg'
+import sleetIcon from './Icons/sleet-icon.svg'
+import snowIcon from './Icons/snow-icon.svg'
+import snowThunderIcon from './Icons/snow-thunder-icon.svg'
+import thunderIcon from './Icons/thunder-icon.svg'
+import torrentialRainIcon from './Icons/tor-rain-icon.svg'
 
 function weatherFacts(){
   const factsArr = [
