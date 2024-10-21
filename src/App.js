@@ -18,6 +18,7 @@ import snowIcon from './Icons/snow-icon.svg'
 import snowThunderIcon from './Icons/snow-thunder-icon.svg'
 import thunderIcon from './Icons/thunder-icon.svg'
 import torrentialRainIcon from './Icons/tor-rain-icon.svg'
+let weatherCondition
 
 function weatherFacts(){
   const factsArr = [
@@ -56,7 +57,7 @@ function App () {
               <input className='location-input' id='location-input' type='text' placeholder='Type Location Here'/>
             </form>
             <h2><span id='weather-condition'>weather condition</span> / <span id='temperature'>temp</span></h2>
-            <img className='weather-icon' src={sunnyIcon} alt='weather icon'/>
+            <img className='weather-icon' id='weather-condition-icon' src={weatherCondition} alt='weather icon'/>
           </div>
 
           <div>
