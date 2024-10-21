@@ -19,6 +19,15 @@ import snowThunderIcon from './Icons/snow-thunder-icon.svg'
 import thunderIcon from './Icons/thunder-icon.svg'
 import torrentialRainIcon from './Icons/tor-rain-icon.svg'
 let weatherCondition
+let weatherIcon
+
+function weatherIconPicker(){
+  weatherCondition = localStorage.getItem('weather-condition')
+  if(weatherCondition.toLowerCase().includes('cloudy')){
+    console.log(`weather condition: ${weatherCondition} contains cloudy`)
+    document.getElementById('weather-condition-icon').src = cloudyIcon
+  }
+}
 
 function weatherFacts(){
   const factsArr = [
@@ -43,6 +52,7 @@ function fetchApi(event){
   event.preventDefault()
   updateWeather()
   weatherFacts()
+  weatherIconPicker()
 }
 
 function App () {
@@ -57,7 +67,7 @@ function App () {
               <input className='location-input' id='location-input' type='text' placeholder='Type Location Here'/>
             </form>
             <h2><span id='weather-condition'>weather condition</span> / <span id='temperature'>temp</span></h2>
-            <img className='weather-icon' id='weather-condition-icon' src={weatherCondition} alt='weather icon'/>
+            <img className='weather-icon' id='weather-condition-icon' src={'/src/Icons/cloudy-icon.svg'} alt='weather icon'/>
           </div>
 
           <div>

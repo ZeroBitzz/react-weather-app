@@ -44,7 +44,7 @@ export const updateWeather = () => { // changes the 5 day forecast and the main 
               try{
                 console.log(responseData.current.temp_f)
                 console.log(responseData.current.condition.text)
-                localStorage.setItem('weatherCondition', responseData.current.condition.text) // sets the weather condition for the icon to be updated on App.js
+                localStorage.setItem('weather-condition', responseData.current.condition.text) // sets the weather condition for the icon to be updated on App.js
                 document.getElementById('temperature').innerHTML = `${responseData.current.temp_f}°F`
                 document.getElementById('weather-condition').innerHTML = responseData.current.condition.text
                 
