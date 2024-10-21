@@ -95,6 +95,7 @@ export const updateWeather = () => { // changes the 5 day forecast and the main 
                 document.getElementById('5-day-forecast-temperature').innerHTML = `${responseData.forecast.forecastday[4].day.maxtemp_f}°F`
                 checkLocalStorageAndUpdate()
                 weatherIconPicker()
+                document.getElementById('weather-condition-icon').style.display = "center"
               }catch(err){
                 console.log(err)
                 document.getElementById('location-input').value = 'Invalid entry'

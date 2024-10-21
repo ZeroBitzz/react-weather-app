@@ -4,9 +4,6 @@ import HistoryAndFacts from './History-And-Facts'
 import weatherman from './weatherman/weatherman.svg'
 import { updateWeather } from './updateWeather'
 
-
-
-
 function weatherFacts(){
   const factsArr = [
     'Dirt mixed with wind can make dust storms called black blizzards!',
