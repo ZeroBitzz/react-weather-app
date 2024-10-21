@@ -3,7 +3,8 @@ export const updateWeather = () => { // changes the 5 day forecast and the main 
     let searchedLocation = document.getElementById('location-input').value
     let containsNumbers = false
     for(let i=0; i<searchedLocation.length; i++){
-        console.log(`${searchedLocation[i]} is a number? ${!isNaN(Number(searchedLocation[i]))}`)
+        // uncomment to check for numbers in console
+        // console.log(`${searchedLocation[i]} is a number? ${!isNaN(Number(searchedLocation[i]))}`)
         if(Number(searchedLocation[i])){
           searchedLocation = 'No numbers please'
           containsNumbers = true
@@ -84,7 +85,7 @@ export const updateWeather = () => { // changes the 5 day forecast and the main 
     // update local storage
     // gets the local storage values and stores them for historyArrison in historyArr
     let historyArr = []
-    let currentLocation = document.getElementById('location-input').value
+    let currentLocation = document.getElementById('location-input').value.toLowerCase()
     for(let i=0; i<5; i++){historyArr.push(localStorage.getItem(`history${i}`))}
     if(!historyArr.includes(currentLocation)){
       historyArr[4] = historyArr[3]
