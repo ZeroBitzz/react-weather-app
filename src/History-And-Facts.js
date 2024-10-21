@@ -84,7 +84,7 @@ function HistoryAndFacts(){
 
             <div className='facts'>
                 <h3>Fun Weather Fact</h3>
-                <span>Hot weather sucks!</span>
+                <span id='weather-fact'>Hot weather sucks!</span>
             </div>
         </div>
     )
