@@ -1,3 +1,28 @@
+//icons
+import sunnyIcon from './Icons/sunny-icon.svg'
+import blizzardIcon from './Icons/blizzard-icon.svg'
+import cloudyIcon from './Icons/cloudy-icon.svg'
+import fogIcon from './Icons/fog-icon.svg'
+import freezingPelletsIcon from './Icons/freezing-pellets-icon.svg'
+import mistIcon from './Icons/mist-icon.svg'
+import partlyCloudyIcon from './Icons/partly-cloudy-icon.svg'
+import rainIcon from './Icons/rain-icon.svg'
+import rainThunderIcon from './Icons/rain-thunder-icon.svg'
+import sleetIcon from './Icons/sleet-icon.svg'
+import snowIcon from './Icons/snow-icon.svg'
+import snowThunderIcon from './Icons/snow-thunder-icon.svg'
+import thunderIcon from './Icons/thunder-icon.svg'
+import torrentialRainIcon from './Icons/tor-rain-icon.svg'
+
+function weatherIconPicker(){
+  if(localStorage.getItem('weather-condition').toLowerCase().includes('cloudy')){
+    console.log(`weather condition: ${localStorage.getItem('weather-condition')} contains cloudy`)
+    document.getElementById('weather-condition-icon').src = cloudyIcon
+  }else if(localStorage.getItem('weather-condition').toLowerCase().includes('sunny') || localStorage.getItem('weather-condition').toLowerCase().includes('clear')){
+    document.getElementById('weather-condition-icon').src = sunnyIcon
+  }
+}
+
 export const updateWeather = () => { // changes the 5 day forecast and the main weather display
     // event.preventDefault() // prevents page from refreshing on submission of form
     let searchedLocation = document.getElementById('location-input').value
@@ -45,6 +70,7 @@ export const updateWeather = () => { // changes the 5 day forecast and the main 
                 console.log(responseData.current.temp_f)
                 console.log(responseData.current.condition.text)
                 localStorage.setItem('weather-condition', responseData.current.condition.text) // sets the weather condition for the icon to be updated on App.js
+                console.log(`set local storage to ${responseData.current.condition.text}`)
                 document.getElementById('temperature').innerHTML = `${responseData.current.temp_f}°F`
                 document.getElementById('weather-condition').innerHTML = responseData.current.condition.text
                 
@@ -68,6 +94,7 @@ export const updateWeather = () => { // changes the 5 day forecast and the main 
                 document.getElementById('5-day-forecast-weather-condition').innerHTML = responseData.forecast.forecastday[4].day.condition.text
                 document.getElementById('5-day-forecast-temperature').innerHTML = `${responseData.forecast.forecastday[4].day.maxtemp_f}°F`
                 checkLocalStorageAndUpdate()
+                weatherIconPicker()
               }catch(err){
                 console.log(err)
                 document.getElementById('location-input').value = 'Invalid entry'

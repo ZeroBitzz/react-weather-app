@@ -3,31 +3,9 @@ import Forecast from './Forecast'
 import HistoryAndFacts from './History-And-Facts'
 import weatherman from './weatherman/weatherman.svg'
 import { updateWeather } from './updateWeather'
-//icons
-import sunnyIcon from './Icons/sunny-icon.svg'
-import blizzardIcon from './Icons/blizzard-icon.svg'
-import cloudyIcon from './Icons/cloudy-icon.svg'
-import fogIcon from './Icons/fog-icon.svg'
-import freezingPelletsIcon from './Icons/freezing-pellets-icon.svg'
-import mistIcon from './Icons/mist-icon.svg'
-import partlyCloudyIcon from './Icons/partly-cloudy-icon.svg'
-import rainIcon from './Icons/rain-icon.svg'
-import rainThunderIcon from './Icons/rain-thunder-icon.svg'
-import sleetIcon from './Icons/sleet-icon.svg'
-import snowIcon from './Icons/snow-icon.svg'
-import snowThunderIcon from './Icons/snow-thunder-icon.svg'
-import thunderIcon from './Icons/thunder-icon.svg'
-import torrentialRainIcon from './Icons/tor-rain-icon.svg'
-let weatherCondition
-let weatherIcon
 
-function weatherIconPicker(){
-  weatherCondition = localStorage.getItem('weather-condition')
-  if(weatherCondition.toLowerCase().includes('cloudy')){
-    console.log(`weather condition: ${weatherCondition} contains cloudy`)
-    document.getElementById('weather-condition-icon').src = cloudyIcon
-  }
-}
+
+
 
 function weatherFacts(){
   const factsArr = [
@@ -52,7 +30,6 @@ function fetchApi(event){
   event.preventDefault()
   updateWeather()
   weatherFacts()
-  weatherIconPicker()
 }
 
 function App () {
@@ -67,7 +44,7 @@ function App () {
               <input className='location-input' id='location-input' type='text' placeholder='Type Location Here'/>
             </form>
             <h2><span id='weather-condition'>weather condition</span> / <span id='temperature'>temp</span></h2>
-            <img className='weather-icon' id='weather-condition-icon' src={'/src/Icons/cloudy-icon.svg'} alt='weather icon'/>
+            <img className='weather-icon' id='weather-condition-icon' src={null} alt='weather icon'/>
           </div>
 
           <div>
