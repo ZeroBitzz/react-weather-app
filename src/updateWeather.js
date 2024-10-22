@@ -153,6 +153,8 @@ export const updateWeather = () => { // changes the 5 day forecast and the main 
       if(!containsNumbers){
         // if case for when the sun is searched
         if(searchedLocation.toLowerCase() === 'the sun' || searchedLocation.toLowerCase() === 'sun'){
+          document.getElementById('forecast-empty-h3').classList.add('hide') // hides text that says forecast is empty
+          document.getElementById('forecast-hr').classList.remove('hide') // displays the hr in the forecast section
           document.getElementById('temperature').innerHTML = '10,000°F'
           document.getElementById('weather-condition').innerHTML = 'Extremely Hot'
           document.getElementById('weather-condition-icon').classList.remove('hide')
@@ -195,9 +197,8 @@ export const updateWeather = () => { // changes the 5 day forecast and the main 
             .then((resp) => resp.json())
             .then((responseData) => {
               try{
-                // console.log(responseData.current.temp_f) TESTINGLOG
-                // console.log(responseData.current.condition.text) TESTINGLOG
-                // console.log(`set local storage to ${responseData.current.condition.text}`) TESTINGLOG
+                document.getElementById('forecast-hr').classList.remove('hide') // displays the hr in the forecast section
+                document.getElementById('forecast-empty-h3').classList.add('hide') // hides text that says forecast is empty
                 localStorage.setItem('weather-condition', responseData.current.condition.text) // sets the weather condition for the icon to be updated on App.js 
                 document.getElementById('temperature').innerHTML = `${responseData.current.temp_f}°F` // sets the temperature based off of the api fetch
                 document.getElementById('weather-condition').innerHTML = responseData.current.condition.text // sets the weather condition based off the api fetch
