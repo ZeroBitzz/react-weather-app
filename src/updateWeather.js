@@ -175,12 +175,10 @@ export const updateWeather = () => { // changes the 5 day forecast and the main 
       localStorage.setItem('history3', historyArr[3])
       localStorage.setItem('history4', historyArr[4])
       document.getElementById('history-span-1').innerHTML = currentLocation
-      let history1
       let history2
       let history3
       let history4
       let history5
-      if(localStorage.getItem('history0') === 'null'){history1 = ''}else{history1=localStorage.getItem('history0')}
       if(localStorage.getItem('history1') === 'null'){history2 = ''}else{history2=localStorage.getItem('history1')}
       if(localStorage.getItem('history2') === 'null'){history3 = ''}else{history3=localStorage.getItem('history2')}
       if(localStorage.getItem('history3') === 'null'){history4 = ''}else{history4=localStorage.getItem('history3')}
