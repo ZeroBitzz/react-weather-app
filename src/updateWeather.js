@@ -14,8 +14,74 @@ import snowThunderIcon from './Icons/snow-thunder-icon.svg'
 import thunderIcon from './Icons/thunder-icon.svg'
 import torrentialRainIcon from './Icons/tor-rain-icon.svg'
 
-// function for picking out weather condition icons for the main weather display and the 5 day forecast
+
+// function for getting the icons for each forecast element
+function forecastIconPicker(index){
+  // cloudy/partly cloudy icons
+  if(localStorage.getItem(`forecast${index}-weather-condition`).toLowerCase().includes('cloudy')){
+    if(localStorage.getItem(`forecast${index}-weather-condition`).toLowerCase().includes('partly')){
+      document.getElementById(`forecast${index}-icon`).src = partlyCloudyIcon
+    }else{
+      document.getElementById(`forecast${index}-icon`).src = cloudyIcon
+    }
+  }
+  // sunny/clear icon
+  else if(localStorage.getItem(`forecast${index}-weather-condition`).toLowerCase().includes('sunny') || localStorage.getItem(`forecast${index}-weather-condition`).toLowerCase().includes('clear')){
+    document.getElementById(`forecast${index}-icon`).src = sunnyIcon
+  }
+  // snow icon
+  else if(localStorage.getItem(`forecast${index}-weather-condition`).toLowerCase().includes('snow')){
+    if(localStorage.getItem(`forecast${index}-weather-condition`).toLowerCase().includes('thunder')){
+      document.getElementById(`forecast${index}-icon`).src = snowThunderIcon
+    }else{
+      document.getElementById(`forecast${index}-icon`).src = snowIcon
+    }
+  }
+  // rain/torrential rain/rain thunder icons
+  else if(localStorage.getItem(`forecast${index}-weather-condition`).toLowerCase().includes('rain')){
+    if(localStorage.getItem(`forecast${index}-weather-condition`).toLowerCase().includes('torrential')){
+      document.getElementById(`forecast${index}-icon`).src = torrentialRainIcon
+    }else if(localStorage.getItem(`forecast${index}-weather-condition`).toLowerCase().includes('thunder')){
+      document.getElementById(`forecast${index}-icon`).src = rainThunderIcon
+    }else{
+      document.getElementById(`forecast${index}-icon`).src = rainIcon
+    }
+  }
+  // mist icon
+  else if(localStorage.getItem(`forecast${index}-weather-condition`).toLowerCase().includes('mist')){
+    document.getElementById(`forecast${index}-icon`).src = mistIcon
+  }
+  // blizzard icon
+  else if(localStorage.getItem(`forecast${index}-weather-condition`).toLowerCase().includes('blizzard')){
+    document.getElementById(`forecast${index}-icon`).src = blizzardIcon
+  }
+  // thunder icon
+  else if(localStorage.getItem(`forecast${index}-weather-condition`).toLowerCase().includes('thunder')){
+    document.getElementById(`forecast${index}-icon`).src = thunderIcon
+  }
+  // fog icon
+  else if(localStorage.getItem(`forecast${index}-weather-condition`).toLowerCase().includes('fog')){
+    document.getElementById(`forecast${index}-icon`).src = fogIcon
+  }
+  // pellets icon
+  else if(localStorage.getItem(`forecast${index}-weather-condition`).toLowerCase().includes('pellets')){
+    document.getElementById(`forecast${index}-icon`).src = freezingPelletsIcon
+  }
+  // sleet icon
+  else if(localStorage.getItem(`forecast${index}-weather-condition`).toLowerCase().includes('sleet')){
+    document.getElementById(`forecast${index}-icon`).src = sleetIcon
+  }
+}
+
+// function for setting the icons of the weather elements on the page based on fetched api data
 function weatherIconPicker(){
+
+  forecastIconPicker(1)
+  forecastIconPicker(2)
+  forecastIconPicker(3)
+  forecastIconPicker(4)
+  forecastIconPicker(5)
+  // SETS MAIN WEATHER CONDITION ICON
   // cloudy/partly cloudy icons
   if(localStorage.getItem('weather-condition').toLowerCase().includes('cloudy')){
     if(localStorage.getItem('weather-condition').toLowerCase().includes('partly')){
@@ -100,7 +166,7 @@ export const updateWeather = () => { // changes the 5 day forecast and the main 
           document.getElementById('forecast2').classList.remove('hide')
           document.getElementById('2-day-forecast-weather-condition').innerHTML = 'Extremely Hot'
           document.getElementById('2-day-forecast-temperature').innerHTML = `10,000°F`
-          document.getElementById('forecast2-icon').src = sunnyIcon
+          document.getElementById(`forecast2-icon`).src = sunnyIcon
         
           // 3 day forecast selectors
           document.getElementById('forecast3').classList.remove('hide')
@@ -148,24 +214,29 @@ export const updateWeather = () => { // changes the 5 day forecast and the main 
                 document.getElementById('forecast2-date').innerHTML = responseData.forecast.forecastday[1].date
                 document.getElementById('2-day-forecast-weather-condition').innerHTML = responseData.forecast.forecastday[1].day.condition.text
                 document.getElementById('2-day-forecast-temperature').innerHTML = `${responseData.forecast.forecastday[1].day.maxtemp_f}°F`
+                localStorage.setItem(`forecast2-weather-condition`, responseData.forecast.forecastday[1].day.condition.text)
               
                 // 3 day forecast selectors
                 document.getElementById('forecast3').classList.remove('hide')
                 document.getElementById('forecast3-date').innerHTML = responseData.forecast.forecastday[2].date
                 document.getElementById('3-day-forecast-weather-condition').innerHTML = responseData.forecast.forecastday[2].day.condition.text
                 document.getElementById('3-day-forecast-temperature').innerHTML = `${responseData.forecast.forecastday[2].day.maxtemp_f}°F`
+                localStorage.setItem('forecast3-weather-condition', responseData.forecast.forecastday[2].day.condition.text)
               
                 // 4 day forecast selectors
                 document.getElementById('forecast4').classList.remove('hide')
                 document.getElementById('forecast4-date').innerHTML = responseData.forecast.forecastday[3].date
                 document.getElementById('4-day-forecast-weather-condition').innerHTML = responseData.forecast.forecastday[3].day.condition.text
                 document.getElementById('4-day-forecast-temperature').innerHTML = `${responseData.forecast.forecastday[3].day.maxtemp_f}°F`
+                localStorage.setItem('forecast4-weather-condition', responseData.forecast.forecastday[3].day.condition.text)
               
                 // 5 day forecast selectors
                 document.getElementById('forecast5').classList.remove('hide')
                 document.getElementById('forecast5-date').innerHTML = responseData.forecast.forecastday[4].date
                 document.getElementById('5-day-forecast-weather-condition').innerHTML = responseData.forecast.forecastday[4].day.condition.text
                 document.getElementById('5-day-forecast-temperature').innerHTML = `${responseData.forecast.forecastday[4].day.maxtemp_f}°F`
+                localStorage.setItem('forecast5-weather-condition', responseData.forecast.forecastday[4].day.condition.text)
+
                 checkLocalStorageAndUpdate()
                 weatherIconPicker()
                 document.getElementById('weather-condition-icon').style.display = "center"
