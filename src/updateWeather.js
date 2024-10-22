@@ -15,10 +15,13 @@ import thunderIcon from './Icons/thunder-icon.svg'
 import torrentialRainIcon from './Icons/tor-rain-icon.svg'
 
 function weatherIconPicker(){
-  // cloudy icon
+  // cloudy/partly cloudy icons
   if(localStorage.getItem('weather-condition').toLowerCase().includes('cloudy')){
-    console.log(`weather condition: ${localStorage.getItem('weather-condition')} contains cloudy`)
-    document.getElementById('weather-condition-icon').src = cloudyIcon
+    if(localStorage.getItem('weather-condition').toLowerCase().includes('partly')){
+      document.getElementById('weather-condition-icon').src = partlyCloudyIcon
+    }else{
+      document.getElementById('weather-condition-icon').src = cloudyIcon
+    }
   }
   // sunny/clear icon
   else if(localStorage.getItem('weather-condition').toLowerCase().includes('sunny') || localStorage.getItem('weather-condition').toLowerCase().includes('clear')){
@@ -26,15 +29,45 @@ function weatherIconPicker(){
   }
   // snow icon
   else if(localStorage.getItem('weather-condition').toLowerCase().includes('snow')){
-    document.getElementById('weather-condition-icon').src = snowIcon
+    if(localStorage.getItem('weather-condition').toLowerCase().includes('thunder')){
+      document.getElementById('weather-condition-icon').src = snowThunderIcon
+    }else{
+      document.getElementById('weather-condition-icon').src = snowIcon
+    }
   }
-  // rain icon
+  // rain/torrential rain/rain thunder icons
   else if(localStorage.getItem('weather-condition').toLowerCase().includes('rain')){
-    document.getElementById('weather-condition-icon').src = rainIcon
+    if(localStorage.getItem('weather-condition').toLowerCase().includes('torrential')){
+      document.getElementById('weather-condition-icon').src = torrentialRainIcon
+    }else if(localStorage.getItem('weather-condition').toLowerCase().includes('thunder')){
+      document.getElementById('weather-condition-icon').src = rainThunderIcon
+    }else{
+      document.getElementById('weather-condition-icon').src = rainIcon
+    }
   }
   // mist icon
   else if(localStorage.getItem('weather-condition').toLowerCase().includes('mist')){
     document.getElementById('weather-condition-icon').src = mistIcon
+  }
+  // blizzard icon
+  else if(localStorage.getItem('weather-condition').toLowerCase().includes('blizzard')){
+    document.getElementById('weather-condition-icon').src = blizzardIcon
+  }
+  // thunder icon
+  else if(localStorage.getItem('weather-condition').toLowerCase().includes('thunder')){
+    document.getElementById('weather-condition-icon').src = thunderIcon
+  }
+  // fog icon
+  else if(localStorage.getItem('weather-condition').toLowerCase().includes('fog')){
+    document.getElementById('weather-condition-icon').src = fogIcon
+  }
+  // pellets icon
+  else if(localStorage.getItem('weather-condition').toLowerCase().includes('pellets')){
+    document.getElementById('weather-condition-icon').src = freezingPelletsIcon
+  }
+  // sleet icon
+  else if(localStorage.getItem('weather-condition').toLowerCase().includes('sleet')){
+    document.getElementById('weather-condition-icon').src = sleetIcon
   }
 }
 
