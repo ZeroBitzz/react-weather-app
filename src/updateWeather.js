@@ -123,22 +123,27 @@ export const updateWeather = () => { // changes the 5 day forecast and the main 
                 document.getElementById('weather-condition').innerHTML = responseData.current.condition.text
                 
                 // 1 day forecast selectors
+                document.getElementById('forecast1').classList.remove('hide')
                 document.getElementById('1-day-forecast-weather-condition').innerHTML = responseData.forecast.forecastday[0].day.condition.text
                 document.getElementById('1-day-forecast-temperature').innerHTML = `${responseData.forecast.forecastday[0].day.maxtemp_f}°F`
               
                 // 2 day forecast selectors
+                document.getElementById('forecast2').classList.remove('hide')
                 document.getElementById('2-day-forecast-weather-condition').innerHTML = responseData.forecast.forecastday[1].day.condition.text
                 document.getElementById('2-day-forecast-temperature').innerHTML = `${responseData.forecast.forecastday[1].day.maxtemp_f}°F`
               
                 // 3 day forecast selectors
+                document.getElementById('forecast3').classList.remove('hide')
                 document.getElementById('3-day-forecast-weather-condition').innerHTML = responseData.forecast.forecastday[2].day.condition.text
                 document.getElementById('3-day-forecast-temperature').innerHTML = `${responseData.forecast.forecastday[2].day.maxtemp_f}°F`
               
                 // 4 day forecast selectors
+                document.getElementById('forecast4').classList.remove('hide')
                 document.getElementById('4-day-forecast-weather-condition').innerHTML = responseData.forecast.forecastday[3].day.condition.text
                 document.getElementById('4-day-forecast-temperature').innerHTML = `${responseData.forecast.forecastday[3].day.maxtemp_f}°F`
               
                 // 5 day forecast selectors
+                document.getElementById('forecast5').classList.remove('hide')
                 document.getElementById('5-day-forecast-weather-condition').innerHTML = responseData.forecast.forecastday[4].day.condition.text
                 document.getElementById('5-day-forecast-temperature').innerHTML = `${responseData.forecast.forecastday[4].day.maxtemp_f}°F`
                 checkLocalStorageAndUpdate()
