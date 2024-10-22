@@ -15,11 +15,26 @@ import thunderIcon from './Icons/thunder-icon.svg'
 import torrentialRainIcon from './Icons/tor-rain-icon.svg'
 
 function weatherIconPicker(){
+  // cloudy icon
   if(localStorage.getItem('weather-condition').toLowerCase().includes('cloudy')){
     console.log(`weather condition: ${localStorage.getItem('weather-condition')} contains cloudy`)
     document.getElementById('weather-condition-icon').src = cloudyIcon
-  }else if(localStorage.getItem('weather-condition').toLowerCase().includes('sunny') || localStorage.getItem('weather-condition').toLowerCase().includes('clear')){
+  }
+  // sunny/clear icon
+  else if(localStorage.getItem('weather-condition').toLowerCase().includes('sunny') || localStorage.getItem('weather-condition').toLowerCase().includes('clear')){
     document.getElementById('weather-condition-icon').src = sunnyIcon
+  }
+  // snow icon
+  else if(localStorage.getItem('weather-condition').toLowerCase().includes('snow')){
+    document.getElementById('weather-condition-icon').src = snowIcon
+  }
+  // rain icon
+  else if(localStorage.getItem('weather-condition').toLowerCase().includes('rain')){
+    document.getElementById('weather-condition-icon').src = rainIcon
+  }
+  // mist icon
+  else if(localStorage.getItem('weather-condition').toLowerCase().includes('mist')){
+    document.getElementById('weather-condition-icon').src = mistIcon
   }
 }
 
@@ -69,7 +84,7 @@ export const updateWeather = () => { // changes the 5 day forecast and the main 
               try{
                 console.log(responseData.current.temp_f)
                 console.log(responseData.current.condition.text)
-                localStorage.setItem('weather-condition', responseData.current.condition.text) // sets the weather condition for the icon to be updated on App.js
+                localStorage.setItem('weather-condition', responseData.current.condition.text) // sets the weather condition for the icon to be updated on App.js 
                 console.log(`set local storage to ${responseData.current.condition.text}`)
                 document.getElementById('temperature').innerHTML = `${responseData.current.temp_f}°F`
                 document.getElementById('weather-condition').innerHTML = responseData.current.condition.text
