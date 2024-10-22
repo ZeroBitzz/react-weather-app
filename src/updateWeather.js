@@ -139,18 +139,19 @@ function weatherIconPicker(){
 }
 
 export const updateWeather = () => { // changes the 5 day forecast and the main weather display
-    // event.preventDefault() // prevents page from refreshing on submission of form
-    let searchedLocation = document.getElementById('location-input').value
+    let searchedLocation = document.getElementById('location-input').value // saves location user searched
+
+    // checks for numbers in user search
     let containsNumbers = false
     for(let i=0; i<searchedLocation.length; i++){
-        // uncomment to check for numbers in console
-        // console.log(`${searchedLocation[i]} is a number? ${!isNaN(Number(searchedLocation[i]))}`)
         if(Number(searchedLocation[i])){
           searchedLocation = 'No numbers please'
           containsNumbers = true
         }
       }
+      // if no numbers, program runs
       if(!containsNumbers){
+        // if case for when the sun is searched
         if(searchedLocation.toLowerCase() === 'the sun' || searchedLocation.toLowerCase() === 'sun'){
           document.getElementById('temperature').innerHTML = '10,000°F'
           document.getElementById('weather-condition').innerHTML = 'Extremely Hot'

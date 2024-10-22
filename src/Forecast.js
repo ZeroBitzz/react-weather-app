@@ -7,7 +7,7 @@ function Forecast(){
             <hr />
                 <div className='day-forecast hide' id='forecast1'>
                     <div>
-                        <span id='forecast1-date'>Date:</span>
+                        <span id='forecast1-date'>Tomorrow</span>
                     </div>
                     <div className='weather-temp-icon-group'>
                         <span id='1-day-forecast-weather-condition'>weather</span>
@@ -18,7 +18,7 @@ function Forecast(){
 
                 <div className='day-forecast hide' id='forecast2'>
                     <div>
-                        <span id='forecast2-date'>Date:</span>
+                        <span id='forecast2-date'>The Next Day</span>
                     </div>
                     <div className='weather-temp-icon-group'>
                         <span id='2-day-forecast-weather-condition'>weather</span>
@@ -29,7 +29,7 @@ function Forecast(){
 
                 <div className='day-forecast hide' id='forecast3'>
                     <div>
-                        <span id='forecast3-date'>Date:</span>
+                        <span id='forecast3-date'>And the Next Day</span>
                     </div>
                     <div className='weather-temp-icon-group'>
                         <span id='3-day-forecast-weather-condition'>weather</span>
@@ -40,7 +40,7 @@ function Forecast(){
 
                 <div className='day-forecast hide' id='forecast4'>
                     <div>
-                        <span id='forecast4-date'>Date:</span>
+                        <span id='forecast4-date'>And the Next Day</span>
                     </div>
                     <div className='weather-temp-icon-group'>
                         <span id='4-day-forecast-weather-condition'>weather</span>
@@ -51,7 +51,7 @@ function Forecast(){
 
                 <div className='day-forecast hide' id='forecast5'>
                     <div>
-                        <span id='forecast5-date'>Date:</span>
+                        <span id='forecast5-date'>And the Next Day</span>
                     </div>
                     <div className='weather-temp-icon-group'>
                         <span id='5-day-forecast-weather-condition'>weather</span>
