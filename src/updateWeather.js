@@ -254,37 +254,37 @@ export const updateWeather = () => { // changes the 5 day forecast and the main 
     }
   }
   
-  // function for updating and logging the users search history using the local storage
-  function checkLocalStorageAndUpdate() {
-    // update local storage
-    // gets the local storage values and stores them for historyArrison in historyArr
-    let historyArr = []
-    let currentLocation = document.getElementById('location-input').value.toLowerCase()
-    for(let i=0; i<5; i++){historyArr.push(localStorage.getItem(`history${i}`))}
-    if(!historyArr.includes(currentLocation)){
-      historyArr[4] = historyArr[3]
-      historyArr[3] = historyArr[2]
-      historyArr[2] = historyArr[1]
-      historyArr[1] = historyArr[0]
-      historyArr[0] = currentLocation
-      localStorage.setItem('history0', currentLocation)
-      localStorage.setItem('history1', historyArr[1])
-      localStorage.setItem('history2', historyArr[2])
-      localStorage.setItem('history3', historyArr[3])
-      localStorage.setItem('history4', historyArr[4])
-      document.getElementById('history-span-1').innerHTML = currentLocation
-      let history2
-      let history3
-      let history4
-      let history5
-      if(localStorage.getItem('history1') === 'null'){history2 = ''}else{history2=localStorage.getItem('history1')}
-      if(localStorage.getItem('history2') === 'null'){history3 = ''}else{history3=localStorage.getItem('history2')}
-      if(localStorage.getItem('history3') === 'null'){history4 = ''}else{history4=localStorage.getItem('history3')}
-      if(localStorage.getItem('history4') === 'null'){history5 = ''}else{history5=localStorage.getItem('history4')}
-      document.getElementById('history-span-2').innerHTML = history2
-      document.getElementById('history-span-3').innerHTML = history3
-      document.getElementById('history-span-4').innerHTML = history4
-      document.getElementById('history-span-5').innerHTML = history5
-      for(let x=0; x<historyArr.length; x++){localStorage.setItem(`history${x}`, historyArr[x])}
-    }
+// function for updating and logging the users search history using the local storage
+function checkLocalStorageAndUpdate() {
+  // update local storage
+  // gets the local storage values and stores them for historyArrison in historyArr
+  let historyArr = []
+  let currentLocation = document.getElementById('location-input').value.toLowerCase()
+  for(let i=0; i<5; i++){historyArr.push(localStorage.getItem(`history${i}`))}
+  if(!historyArr.includes(currentLocation)){
+    historyArr[4] = historyArr[3]
+    historyArr[3] = historyArr[2]
+    historyArr[2] = historyArr[1]
+    historyArr[1] = historyArr[0]
+    historyArr[0] = currentLocation
+    localStorage.setItem('history0', currentLocation)
+    localStorage.setItem('history1', historyArr[1])
+    localStorage.setItem('history2', historyArr[2])
+    localStorage.setItem('history3', historyArr[3])
+    localStorage.setItem('history4', historyArr[4])
+    document.getElementById('history-span-1').innerHTML = currentLocation
+    let history2
+    let history3
+    let history4
+    let history5
+    if(localStorage.getItem('history1') === 'null'){history2 = ''}else{history2=localStorage.getItem('history1')}
+    if(localStorage.getItem('history2') === 'null'){history3 = ''}else{history3=localStorage.getItem('history2')}
+    if(localStorage.getItem('history3') === 'null'){history4 = ''}else{history4=localStorage.getItem('history3')}
+    if(localStorage.getItem('history4') === 'null'){history5 = ''}else{history5=localStorage.getItem('history4')}
+    document.getElementById('history-span-2').innerHTML = history2
+    document.getElementById('history-span-3').innerHTML = history3
+    document.getElementById('history-span-4').innerHTML = history4
+    document.getElementById('history-span-5').innerHTML = history5
+    for(let x=0; x<historyArr.length; x++){localStorage.setItem(`history${x}`, historyArr[x])}
   }
+}
