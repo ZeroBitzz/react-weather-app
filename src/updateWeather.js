@@ -14,6 +14,7 @@ import snowThunderIcon from './Icons/snow-thunder-icon.svg'
 import thunderIcon from './Icons/thunder-icon.svg'
 import torrentialRainIcon from './Icons/tor-rain-icon.svg'
 
+// function for picking out weather condition icons for the main weather display and the 5 day forecast
 function weatherIconPicker(){
   // cloudy/partly cloudy icons
   if(localStorage.getItem('weather-condition').toLowerCase().includes('cloudy')){
@@ -87,25 +88,37 @@ export const updateWeather = () => { // changes the 5 day forecast and the main 
         if(searchedLocation.toLowerCase() === 'the sun' || searchedLocation.toLowerCase() === 'sun'){
           document.getElementById('temperature').innerHTML = '10,000°F'
           document.getElementById('weather-condition').innerHTML = 'Extremely Hot'
+          document.getElementById('weather-condition-icon').classList.remove('hide')
+          document.getElementById('weather-condition-icon').src = sunnyIcon
           // 1 day forecast selectors
+          document.getElementById('forecast1').classList.remove('hide')
           document.getElementById('1-day-forecast-weather-condition').innerHTML = 'Extremely Hot'
           document.getElementById('1-day-forecast-temperature').innerHTML = `10,000°F`
+          document.getElementById('forecast1-icon').src = sunnyIcon
         
           // 2 day forecast selectors
+          document.getElementById('forecast2').classList.remove('hide')
           document.getElementById('2-day-forecast-weather-condition').innerHTML = 'Extremely Hot'
           document.getElementById('2-day-forecast-temperature').innerHTML = `10,000°F`
+          document.getElementById('forecast2-icon').src = sunnyIcon
         
           // 3 day forecast selectors
+          document.getElementById('forecast3').classList.remove('hide')
           document.getElementById('3-day-forecast-weather-condition').innerHTML = 'Extremely Hot'
           document.getElementById('3-day-forecast-temperature').innerHTML = `10,000°F`
+          document.getElementById('forecast3-icon').src = sunnyIcon
         
           // 4 day forecast selectors
+          document.getElementById('forecast4').classList.remove('hide')
           document.getElementById('4-day-forecast-weather-condition').innerHTML = 'Extremely Hot'
           document.getElementById('4-day-forecast-temperature').innerHTML = `10,000°F`
+          document.getElementById('forecast4-icon').src = sunnyIcon
         
           // 5 day forecast selectors
+          document.getElementById('forecast5').classList.remove('hide')
           document.getElementById('5-day-forecast-weather-condition').innerHTML = 'Extremely Hot'
           document.getElementById('5-day-forecast-temperature').innerHTML = `10,000°F`
+          document.getElementById('forecast5-icon').src = sunnyIcon
           checkLocalStorageAndUpdate()
         }else{
           // gets api data and populates page based on what user inputs for the location
@@ -163,6 +176,7 @@ export const updateWeather = () => { // changes the 5 day forecast and the main 
     }
   }
   
+  // function for updating and logging the users search history using the local storage
   function checkLocalStorageAndUpdate() {
     // update local storage
     // gets the local storage values and stores them for historyArrison in historyArr
