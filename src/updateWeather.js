@@ -137,8 +137,8 @@ function weatherIconPicker(){
     document.getElementById('weather-condition-icon').src = sleetIcon
   }
 }
-
-export const updateWeather = () => { // changes the 5 day forecast and the main weather display
+ // changes the 5 day forecast and the main weather display
+export const updateWeather = () => {
     let searchedLocation = document.getElementById('location-input').value // saves location user searched
 
     // checks for numbers in user search
@@ -253,7 +253,7 @@ export const updateWeather = () => { // changes the 5 day forecast and the main 
     }else{
       document.getElementById('location-input').value = 'No numbers please'
     }
-  }
+}
   
 // function for updating and logging the users search history using the local storage
 function checkLocalStorageAndUpdate() {

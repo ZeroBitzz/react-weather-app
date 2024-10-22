@@ -1,10 +1,10 @@
 import './History-And-Facts.css'
 import { updateWeather } from './updateWeather'
+import { weatherFacts } from './App'
 
 // function for changing the temperature manually using the thermostat in the top right corner of the app 
 const crankThermostat = (event) => {
     event.preventDefault() // preventDefault() is for preventing the page from refreshing 
-    console.log(`the temperature is ${document.getElementById('thermostat').value}`)
     document.getElementById('temperature').innerHTML = document.getElementById('thermostat').value + '°F'
     if(document.getElementById('thermostat').value === ''){
         document.getElementById('temperature').innerHTML = `0°F`
@@ -17,6 +17,7 @@ function historySearch1(event){
     if(document.getElementById('location-input')){
         document.getElementById('location-input').value = document.getElementById('history-span-1').innerHTML
         updateWeather()
+        weatherFacts()
     }
 }
 function historySearch2(event){
@@ -24,6 +25,7 @@ function historySearch2(event){
     if(document.getElementById('location-input')){
         document.getElementById('location-input').value = document.getElementById('history-span-2').innerHTML
         updateWeather()
+        weatherFacts()
     }
 }
 function historySearch3(event){
@@ -31,6 +33,7 @@ function historySearch3(event){
     if(document.getElementById('location-input')){
         document.getElementById('location-input').value = document.getElementById('history-span-3').innerHTML
         updateWeather()
+        weatherFacts()
     }
 }
 function historySearch4(event){
@@ -39,6 +42,7 @@ function historySearch4(event){
     if(document.getElementById('location-input')){
         document.getElementById('location-input').value = document.getElementById('history-span-4').innerHTML
         updateWeather()
+        weatherFacts()
     }
 }
 function historySearch5(event){
@@ -46,15 +50,13 @@ function historySearch5(event){
     if(document.getElementById('location-input')){
         document.getElementById('location-input').value = document.getElementById('history-span-5').innerHTML
         updateWeather()
+        weatherFacts()
     }
 }
 
 function HistoryAndFacts(){
-    let history1
-    let history2
-    let history3
-    let history4
-    let history5
+    // if history in local storage is null, it gives an empty value, otherwise populates with local storage data
+    let history1, history2, history3, history4, history5
     if(localStorage.getItem('history0') === 'null'){history1 = ''}else{history1=localStorage.getItem('history0')}
     if(localStorage.getItem('history1') === 'null'){history2 = ''}else{history2=localStorage.getItem('history1')}
     if(localStorage.getItem('history2') === 'null'){history3 = ''}else{history3=localStorage.getItem('history2')}

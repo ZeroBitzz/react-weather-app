@@ -4,7 +4,9 @@ import HistoryAndFacts from './History-And-Facts'
 import weatherman from './weatherman/weatherman.svg'
 import { updateWeather } from './updateWeather'
 
-function weatherFacts(){
+
+// function that gives the user a random weather fact from the array
+export function weatherFacts(){
   const factsArr = [
     'Dirt mixed with wind can make dust storms called black blizzards!',
     'Heatwaves can make train tracks bend! Talk about things going off the rails!',
@@ -23,10 +25,11 @@ function weatherFacts(){
   weatherFact.innerHTML = factsArr[weatherFactPicker]
 }
 
+// function that fetches the weather api and dynamically updates the page
 function fetchApi(event){
-  event.preventDefault()
-  updateWeather()
-  weatherFacts()
+  event.preventDefault() // prevents the page from refreshing when the form is submitted that this function is attached to
+  updateWeather() // main api fetching function
+  weatherFacts() // updates fun weather fact
 }
 
 function App () {
