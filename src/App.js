@@ -41,7 +41,7 @@ function App () {
           <div>
             <h1>Brodericks Weather App</h1>
             <form onSubmit={fetchApi}>
-              <input className='location-input' id='location-input' type='text' placeholder='Type Location Here'/>
+              <input className='location-input' id='location-input' type='text' placeholder='Type City Here'/>
             </form>
             <h2><span id='weather-condition'>weather condition</span> / <span id='temperature'>temp</span></h2>
             <img className='weather-icon hide' id='weather-condition-icon' src={null} alt='weather icon'/>
