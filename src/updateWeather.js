@@ -18,7 +18,7 @@ import torrentialRainIcon from './Icons/tor-rain-icon.svg'
 // function for getting the icons for each forecast element
 function forecastIconPicker(index){
   // cloudy/partly cloudy icons
-  if(localStorage.getItem(`forecast${index}-weather-condition`).toLowerCase().includes('cloudy')){
+  if(localStorage.getItem(`forecast${index}-weather-condition`).toLowerCase().includes('cloudy') || localStorage.getItem(`forecast${index}-weather-condition`).toLowerCase().includes('overcast')){
     if(localStorage.getItem(`forecast${index}-weather-condition`).toLowerCase().includes('partly')){
       document.getElementById(`forecast${index}-icon`).src = partlyCloudyIcon
     }else{
@@ -83,7 +83,7 @@ function weatherIconPicker(){
   forecastIconPicker(5)
   // SETS MAIN WEATHER CONDITION ICON
   // cloudy/partly cloudy icons
-  if(localStorage.getItem('weather-condition').toLowerCase().includes('cloudy')){
+  if(localStorage.getItem('weather-condition').toLowerCase().includes('cloudy') || localStorage.getItem('weather-condition').toLowerCase().includes('overcast')){
     if(localStorage.getItem('weather-condition').toLowerCase().includes('partly')){
       document.getElementById('weather-condition-icon').src = partlyCloudyIcon
     }else{
