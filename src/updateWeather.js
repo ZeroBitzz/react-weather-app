@@ -251,7 +251,7 @@ export const updateWeather = () => {
           fetchData()
         }
     }else{
-      document.getElementById('location-input').value = 'No numbers please'
+      document.getElementById('location-input').value = 'No numbers'
     }
 }
   
