@@ -38,7 +38,7 @@ function forecastIconPicker(index){
     }
   }
   // rain/torrential rain/rain thunder icons
-  else if(localStorage.getItem(`forecast${index}-weather-condition`).toLowerCase().includes('rain')){
+  else if(localStorage.getItem(`forecast${index}-weather-condition`).toLowerCase().includes('rain') || localStorage.getItem(`forecast${index}-weather-condition`).toLowerCase().includes('drizzle')){
     if(localStorage.getItem(`forecast${index}-weather-condition`).toLowerCase().includes('torrential')){
       document.getElementById(`forecast${index}-icon`).src = torrentialRainIcon
     }else if(localStorage.getItem(`forecast${index}-weather-condition`).toLowerCase().includes('thunder')){
@@ -103,7 +103,7 @@ function weatherIconPicker(){
     }
   }
   // rain/torrential rain/rain thunder icons
-  else if(localStorage.getItem('weather-condition').toLowerCase().includes('rain')){
+  else if(localStorage.getItem('weather-condition').toLowerCase().includes('rain') || localStorage.getItem('weather-condition').toLowerCase().includes('drizzle')){
     if(localStorage.getItem('weather-condition').toLowerCase().includes('torrential')){
       document.getElementById('weather-condition-icon').src = torrentialRainIcon
     }else if(localStorage.getItem('weather-condition').toLowerCase().includes('thunder')){
