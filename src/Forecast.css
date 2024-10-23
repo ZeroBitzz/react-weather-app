@@ -1,3 +1,7 @@
+h3{
+    font-size: 2.1vw;
+}
+
 .day-forecast {
     display: flex;
     flex-direction: column;
@@ -5,6 +9,8 @@
     background-color: rgb(69, 69, 69);
     border-radius: 20px;
     width: 100%;
+    height: 5vw;
+    padding: 12px;
 }
 .day-forecast img {
     width: 50px;
@@ -12,6 +18,7 @@
 }
 .day-forecast span {
     margin-right: 10px;
+    font-size: 1.4vw;
 }
 
 .five-day-forecast {
@@ -20,6 +27,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    margin-left: 20px;
     align-items: center;
 }
 
@@ -35,4 +43,10 @@ hr {
 
 .hide {
     display: none;
+}
+
+@media only screen and (max-width: 900px) {
+    .day-forecast img{
+        display: none;
+    }
 }

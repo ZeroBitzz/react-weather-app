@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: space-evenly;
     width: 20%;
+    margin-right: 20px;
 }
 
 .history {
@@ -50,4 +51,11 @@ input::-webkit-inner-spin-button {
 }
 input[type=number]{ /* for firefox */
     -moz-appearance: textfield;
+}
+
+/* breakpoints */
+@media only screen and (max-width: 600px) {
+    .history-and-facts{
+        display: none;
+    }
 }
