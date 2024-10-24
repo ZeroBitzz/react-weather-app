@@ -2,9 +2,8 @@ import './App.css'
 import Forecast from './Forecast'
 import HistoryAndFacts from './History-And-Facts'
 import { updateWeather } from './updateWeather'
-import Rive from 'rive-react'
-// Or import just the bits you need
-// import { Rive } from "@rive-app/canvas";
+import {Rive, useRive, useStateMachineInput} from 'rive-react'
+import weatherman from './weatherman/weatherman.riv'
 
 
 // function that gives the user a random weather fact from the array
@@ -34,7 +33,22 @@ function fetchApi(event){
   weatherFacts() // updates fun weather fact
 }
 
+
 function App () {
+  const {rive, RiveComponent} = useRive({
+    src: weatherman,
+    stateMachines: 'statemachine',
+    autoplay: true
+  })
+
+  const weathermanStateSetter = useStateMachineInput(
+    rive,
+    "statemachine",
+    "animation",
+    0
+  )
+
+
   return (
     <div className="App">
       <Forecast />
@@ -48,10 +62,7 @@ function App () {
             <h2><span id='weather-condition'>weather condition</span> / <span id='temperature'>temp</span></h2>
             <img className='weather-icon hide' id='weather-condition-icon' src={null} alt='weather icon'/>
           </div>
-
-          <div>
-            <Rive />
-          </div>
+            <RiveComponent onClick={() => weathermanStateSetter.value = 1}/>
         </div>
 
       </div>
