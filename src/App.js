@@ -2,7 +2,7 @@ import './App.css'
 import Forecast from './Forecast'
 import HistoryAndFacts from './History-And-Facts'
 import { updateWeather } from './updateWeather'
-import {Rive, useRive, useStateMachineInput} from 'rive-react'
+import { useRive, useStateMachineInput} from 'rive-react'
 import weatherman from './weatherman/weatherman.riv'
 
 
