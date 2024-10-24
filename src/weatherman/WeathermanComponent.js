@@ -2,13 +2,22 @@ import {Rive, useRive, useStateMachineInput} from 'rive-react'
 import weatherman from './weatherman.riv'
 
 function WeathermanComponent(){
+    console.log('buffer')
     const {rive, RiveComponent} = useRive({
-        src: weatherman,
-        stateMachines: 'statemachine',
-        autoplay: true
+      buffer: weatherman,
+      src: weatherman,
+      stateMachines: 'statemachine',
+      autoplay: true
     })
+  
+    const weathermanStateSetter = useStateMachineInput(
+      rive,
+      "statemachine",
+      "animation",
+      0
+    )
       
-    return (<RiveComponent />)
+    return (<RiveComponent className='weatherman'/>)
 }
 
 export default WeathermanComponent

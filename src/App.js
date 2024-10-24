@@ -2,8 +2,8 @@ import './App.css'
 import Forecast from './Forecast'
 import HistoryAndFacts from './History-And-Facts'
 import { updateWeather } from './updateWeather'
-import { useRive, useStateMachineInput} from 'rive-react'
 import weatherman from './weatherman/weatherman.riv'
+import WeathermanComponent from './weatherman/WeathermanComponent'
 
 
 // function that gives the user a random weather fact from the array
@@ -28,20 +28,7 @@ export function weatherFacts(){
 
 
 function App () {
-  console.log('buffer')
-  const {rive, RiveComponent} = useRive({
-    buffer: weatherman,
-    src: weatherman,
-    stateMachines: 'statemachine',
-    autoplay: true
-  })
 
-  const weathermanStateSetter = useStateMachineInput(
-    rive,
-    "statemachine",
-    "animation",
-    0
-  )
 
   // function that fetches the weather api and dynamically updates the page
   const fetchApi = (event) => {
@@ -49,51 +36,45 @@ function App () {
     updateWeather() // main api fetching function
     let temp = localStorage.getItem('temperature')
     console.log(`temp is ${temp}`)
-    let weathermanState = 0
-    let frozen = false
-    let melted = false
-    
-    // weatherman transitions
-    if(localStorage.getItem('weathermanState')){ // sets initial weather man state
-      weathermanState = localStorage.getItem('weathermanState')
-    }
-    if(!melted){
-      weatherFacts() // updates fun weather fact
-      temp = localStorage.getItem('temperature')
-      if(frozen){
-        console.log('still frozen')
-        if(temp > 80){
-          weathermanStateSetter.value = 4
-          console.log('unfrozen')
-          frozen = false
-          if(temp > 995){
-            setTimeout(() => {
-              weathermanStateSetter.value = 5
-            }, 1000);
-          }
-        }
-      }else{
-        if(temp < 60){
-          weathermanStateSetter.value = 1
-          if(temp < 32){
-            setTimeout(() => {
-              weathermanStateSetter.value = 3
-              console.log('frozen!')
-              frozen = true
-            }, 1000)
-          }
-        }else if(temp > 80){
-          weathermanStateSetter.value = 2
-          if(temp > 995){
-            setTimeout(() => {
-              weathermanStateSetter.value = 5
-              melted = true
-              document.getElementById('weather-fact').innerHTML = 'You killed the weather man! Its cool though just refresh the page and he should be fine.'
-            }, 1000);
-          }
-        }
-      }
-    }
+    // let frozen = false
+    // let melted = false
+    // if(!melted){
+    //   weatherFacts() // updates fun weather fact
+    //   temp = localStorage.getItem('temperature')
+    //   if(frozen){
+    //     console.log('still frozen')
+    //     if(temp > 80){
+    //       weathermanStateSetter.value = 4
+    //       console.log('unfrozen')
+    //       frozen = false
+    //       if(temp > 995){
+    //         setTimeout(() => {
+    //           weathermanStateSetter.value = 5
+    //         }, 1000);
+    //       }
+    //     }
+    //   }else{
+    //     if(temp < 60){
+    //       weathermanStateSetter.value = 1
+    //       if(temp < 32){
+    //         setTimeout(() => {
+    //           weathermanStateSetter.value = 3
+    //           console.log('frozen!')
+    //           frozen = true
+    //         }, 1000)
+    //       }
+    //     }else if(temp > 80){
+    //       weathermanStateSetter.value = 2
+    //       if(temp > 995){
+    //         setTimeout(() => {
+    //           weathermanStateSetter.value = 5
+    //           melted = true
+    //           document.getElementById('weather-fact').innerHTML = 'You killed the weather man! Its cool though just refresh the page and he should be fine.'
+    //         }, 1000);
+    //       }
+    //     }
+    //   }
+    // }
   }
 
 
@@ -108,7 +89,7 @@ function App () {
               <input className='location-input' id='location-input' type='text' placeholder='Type City Here'/>
               <h2><span id='weather-condition'>weather condition</span> / <span id='temperature'>temp</span></h2>
               <img className='weather-icon hide' id='weather-condition-icon' src={null} alt='weather icon'/>
-              <RiveComponent onSubmit={() => weathermanStateSetter.value = 1} className='weatherman'/>
+              <WeathermanComponent />
             </form>
           </div>
         </div>
