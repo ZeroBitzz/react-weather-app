@@ -153,6 +153,7 @@ export const updateWeather = () => {
       if(!containsNumbers){
         // if case for when the sun is searched
         if(searchedLocation.toLowerCase() === 'the sun' || searchedLocation.toLowerCase() === 'sun'){
+          localStorage.setItem('temperature', 10000)
           document.getElementById('forecast-empty-h3').classList.add('hide') // hides text that says forecast is empty
           document.getElementById('forecast-hr').classList.remove('hide') // displays the hr in the forecast section
           document.getElementById('temperature').innerHTML = '10,000°F'
@@ -197,6 +198,7 @@ export const updateWeather = () => {
             .then((resp) => resp.json())
             .then((responseData) => {
               try{
+                localStorage.setItem('temperature', responseData.current.temp_f)
                 document.getElementById('forecast-hr').classList.remove('hide') // displays the hr in the forecast section
                 document.getElementById('forecast-empty-h3').classList.add('hide') // hides text that says forecast is empty
                 localStorage.setItem('weather-condition', responseData.current.condition.text) // sets the weather condition for the icon to be updated on App.js 

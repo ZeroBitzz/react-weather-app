@@ -26,13 +26,6 @@ export function weatherFacts(){
   weatherFact.innerHTML = factsArr[weatherFactPicker]
 }
 
-// function that fetches the weather api and dynamically updates the page
-function fetchApi(event){
-  event.preventDefault() // prevents the page from refreshing when the form is submitted that this function is attached to
-  updateWeather() // main api fetching function
-  weatherFacts() // updates fun weather fact
-}
-
 
 function App () {
   const {rive, RiveComponent} = useRive({
@@ -48,6 +41,54 @@ function App () {
     0
   )
 
+  // function that fetches the weather api and dynamically updates the page
+  const fetchApi = (event) => {
+    event.preventDefault() // prevents the page from refreshing when the form is submitted that this function is attached to
+    updateWeather() // main api fetching function
+    weatherFacts() // updates fun weather fact
+    let temp = localStorage.getItem('temperature')
+    console.log(`temp is ${temp}`)
+    let weathermanState = 0
+    let frozen = false
+    let melted = false
+
+    // weatherman transitions
+    if(localStorage.getItem('weathermanState')){ // sets initial weather man state
+      weathermanState = localStorage.getItem('weathermanState')
+    }
+    if(!melted){
+      if(frozen){
+        if(temp > 80){
+          weathermanStateSetter.value = 4
+          frozen = false
+          console.log('frozen!')
+          if(temp > 995){
+            setTimeout(() => {
+              weathermanStateSetter.value = 5
+            }, 1000);
+          }
+        }
+      }else{
+        if(temp < 60){
+          weathermanStateSetter.value = 1
+          if(temp < 32){
+            setTimeout(() => {
+              weathermanStateSetter.value = 3
+              frozen = true
+            }, 1000)
+          }
+        }else if(temp > 80){
+          weathermanStateSetter.value = 2
+          if(temp > 995){
+            setTimeout(() => {
+              weathermanStateSetter.value = 5
+            }, 1000);
+          }
+        }
+      }
+    }
+  }
+
 
   return (
     <div className="App">
@@ -58,11 +99,11 @@ function App () {
             <h1>Brodericks Weather App</h1>
             <form onSubmit={fetchApi}>
               <input className='location-input' id='location-input' type='text' placeholder='Type City Here'/>
+              <h2><span id='weather-condition'>weather condition</span> / <span id='temperature'>temp</span></h2>
+              <img className='weather-icon hide' id='weather-condition-icon' src={null} alt='weather icon'/>
+              <RiveComponent onSubmit={() => weathermanStateSetter.value = 1} className='weatherman'/>
             </form>
-            <h2><span id='weather-condition'>weather condition</span> / <span id='temperature'>temp</span></h2>
-            <img className='weather-icon hide' id='weather-condition-icon' src={null} alt='weather icon'/>
           </div>
-            <RiveComponent onClick={() => weathermanStateSetter.value = 1}/>
         </div>
 
       </div>
