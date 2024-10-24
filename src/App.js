@@ -45,23 +45,25 @@ function App () {
   const fetchApi = (event) => {
     event.preventDefault() // prevents the page from refreshing when the form is submitted that this function is attached to
     updateWeather() // main api fetching function
-    weatherFacts() // updates fun weather fact
     let temp = localStorage.getItem('temperature')
     console.log(`temp is ${temp}`)
     let weathermanState = 0
     let frozen = false
     let melted = false
-
+    
     // weatherman transitions
     if(localStorage.getItem('weathermanState')){ // sets initial weather man state
       weathermanState = localStorage.getItem('weathermanState')
     }
     if(!melted){
+      weatherFacts() // updates fun weather fact
+      temp = localStorage.getItem('temperature')
       if(frozen){
+        console.log('still frozen')
         if(temp > 80){
           weathermanStateSetter.value = 4
+          console.log('unfrozen')
           frozen = false
-          console.log('frozen!')
           if(temp > 995){
             setTimeout(() => {
               weathermanStateSetter.value = 5
@@ -74,6 +76,7 @@ function App () {
           if(temp < 32){
             setTimeout(() => {
               weathermanStateSetter.value = 3
+              console.log('frozen!')
               frozen = true
             }, 1000)
           }
@@ -82,6 +85,8 @@ function App () {
           if(temp > 995){
             setTimeout(() => {
               weathermanStateSetter.value = 5
+              melted = true
+              document.getElementById('weather-fact').innerHTML = 'You killed the weather man! Its cool though just refresh the page and he should be fine.'
             }, 1000);
           }
         }

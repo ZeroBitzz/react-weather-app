@@ -198,7 +198,6 @@ export const updateWeather = () => {
             .then((resp) => resp.json())
             .then((responseData) => {
               try{
-                localStorage.setItem('temperature', responseData.current.temp_f)
                 document.getElementById('forecast-hr').classList.remove('hide') // displays the hr in the forecast section
                 document.getElementById('forecast-empty-h3').classList.add('hide') // hides text that says forecast is empty
                 localStorage.setItem('weather-condition', responseData.current.condition.text) // sets the weather condition for the icon to be updated on App.js 
@@ -244,6 +243,7 @@ export const updateWeather = () => {
                 checkLocalStorageAndUpdate()
                 weatherIconPicker()
                 document.getElementById('weather-condition-icon').style.display = "center"
+                localStorage.setItem('temperature', responseData.current.temp_f)
               }catch(err){
                 console.log(err)
                 document.getElementById('location-input').value = 'Invalid entry'
