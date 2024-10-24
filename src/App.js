@@ -1,8 +1,10 @@
 import './App.css'
 import Forecast from './Forecast'
 import HistoryAndFacts from './History-And-Facts'
-import weatherman from './weatherman/weatherman.svg'
 import { updateWeather } from './updateWeather'
+import Rive from 'rive-react'
+// Or import just the bits you need
+// import { Rive } from "@rive-app/canvas";
 
 
 // function that gives the user a random weather fact from the array
@@ -48,7 +50,7 @@ function App () {
           </div>
 
           <div>
-            <img className='weatherman' src={weatherman} alt='weatherman'/>
+            <Rive />
           </div>
         </div>
 
