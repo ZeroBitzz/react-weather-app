@@ -29,6 +29,7 @@ export function weatherFacts(){
 
 function App () {
   const {rive, RiveComponent} = useRive({
+    buffer: weatherman,
     src: weatherman,
     stateMachines: 'statemachine',
     autoplay: true
