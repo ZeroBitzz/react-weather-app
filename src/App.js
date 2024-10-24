@@ -28,6 +28,7 @@ export function weatherFacts(){
 
 
 function App () {
+  console.log('buffer')
   const {rive, RiveComponent} = useRive({
     buffer: weatherman,
     src: weatherman,
